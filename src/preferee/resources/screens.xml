@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screens type="array">
+  <screen>
+    <id type="integer">1</id>
+    <name>Zaal 1</name>
+    <rows type="integer">20</rows>
+    <cols type="integer">20</cols>
+    <number-of-seats type="integer">400</number-of-seats>
+    <created-at type="dateTime">2015-02-21T13:35:17Z</created-at>
+    <updated-at type="dateTime">2015-02-22T18:14:18Z</updated-at>
+  </screen>
+  <screen>
+    <id type="integer">2</id>
+    <name>Zaal 2</name>
+    <rows type="integer">5</rows>
+    <cols type="integer">10</cols>
+    <number-of-seats type="integer">50</number-of-seats>
+    <created-at type="dateTime">2015-02-21T13:39:28Z</created-at>
+    <updated-at type="dateTime">2015-02-21T13:39:28Z</updated-at>
+  </screen>
+  <screen>
+    <id type="integer">3</id>
+    <name>Zaal 3</name>
+    <rows type="integer">42</rows>
+    <cols type="integer">10</cols>
+    <number-of-seats type="integer">420</number-of-seats>
+    <created-at type="dateTime">2015-03-02T15:47:14Z</created-at>
+    <updated-at type="dateTime">2015-03-02T15:47:14Z</updated-at>
+  </screen>
+  <screen>
+    <id type="integer">4</id>
+    <name>Zaal 4</name>
+    <rows type="integer">15</rows>
+    <cols type="integer">8</cols>
+    <number-of-seats type="integer">120</number-of-seats>
+    <created-at type="dateTime">2015-03-02T15:47:37Z</created-at>
+    <updated-at type="dateTime">2015-03-02T15:47:37Z</updated-at>
+  </screen>
+</screens>

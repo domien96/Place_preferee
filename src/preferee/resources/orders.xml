@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orders type="array">
+  <order>
+    <id type="integer">1</id>
+    <name>Bart Mesuere</name>
+    <showing-id type="integer">1</showing-id>
+    <created-at type="dateTime">2015-02-22T12:22:26Z</created-at>
+    <updated-at type="dateTime">2015-02-22T17:45:01Z</updated-at>
+  </order>
+  <order>
+    <id type="integer">2</id>
+    <name>Kris Coolsaet</name>
+    <showing-id type="integer">7</showing-id>
+    <created-at type="dateTime">2015-02-22T12:41:16Z</created-at>
+    <updated-at type="dateTime">2015-03-02T15:58:28Z</updated-at>
+  </order>
+  <order>
+    <id type="integer">3</id>
+    <name>Peter Dawyndt</name>
+    <showing-id type="integer">3</showing-id>
+    <created-at type="dateTime">2015-02-24T17:28:49Z</created-at>
+    <updated-at type="dateTime">2015-03-02T15:58:51Z</updated-at>
+  </order>
+  <order>
+    <id type="integer">4</id>
+    <name>Marko van Dooren</name>
+    <showing-id type="integer">5</showing-id>
+    <created-at type="dateTime">2015-03-02T15:59:33Z</created-at>
+    <updated-at type="dateTime">2015-03-02T15:59:33Z</updated-at>
+  </order>
+  <order>
+    <id type="integer">5</id>
+    <name>Bart De Bruyn</name>
+    <showing-id type="integer">9</showing-id>
+    <created-at type="dateTime">2015-03-02T15:59:49Z</created-at>
+    <updated-at type="dateTime">2015-03-02T15:59:49Z</updated-at>
+  </order>
+  <order>
+    <id type="integer">6</id>
+    <name>André Mottart</name>
+    <showing-id type="integer">12</showing-id>
+    <created-at type="dateTime">2015-03-02T16:00:05Z</created-at>
+    <updated-at type="dateTime">2015-03-02T16:00:05Z</updated-at>
+  </order>
+  <order>
+    <id type="integer">7</id>
+    <name>Veerle Fack</name>
+    <showing-id type="integer">15</showing-id>
+    <created-at type="dateTime">2015-03-02T16:00:23Z</created-at>
+    <updated-at type="dateTime">2015-03-02T16:00:23Z</updated-at>
+  </order>
+  <order>
+    <id type="integer">8</id>
+    <name>Leo Storme</name>
+    <showing-id type="integer">9</showing-id>
+    <created-at type="dateTime">2015-03-02T16:01:06Z</created-at>
+    <updated-at type="dateTime">2015-03-02T16:01:06Z</updated-at>
+  </order>
+  <order>
+    <id type="integer">9</id>
+    <name>Nicolas Van Cleemput</name>
+    <showing-id type="integer">10</showing-id>
+    <created-at type="dateTime">2015-03-02T16:01:34Z</created-at>
+    <updated-at type="dateTime">2015-03-02T16:02:28Z</updated-at>
+  </order>
+  <order>
+    <id type="integer">10</id>
+    <name>Hendrik Vanhees</name>
+    <showing-id type="integer">12</showing-id>
+    <created-at type="dateTime">2015-03-02T16:02:00Z</created-at>
+    <updated-at type="dateTime">2015-03-02T16:02:00Z</updated-at>
+  </order>
+  <order>
+    <id type="integer">11</id>
+    <name>Herman De Beukelaer</name>
+    <showing-id type="integer">1</showing-id>
+    <created-at type="dateTime">2015-03-02T16:10:15Z</created-at>
+    <updated-at type="dateTime">2015-03-02T16:10:15Z</updated-at>
+  </order>
+</orders>

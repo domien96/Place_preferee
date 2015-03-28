@@ -1,0 +1,19 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Scene Builder backups
+*.bak
+
+#
+/build/
+/dist/
+/out/
+
+# .idea files
+/.idea/workspace.xml
+/.idea/tasks.xml
+/.idea/gradle.xml

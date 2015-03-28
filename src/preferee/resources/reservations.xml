@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reservations type="array">
+  <reservation>
+    <id type="integer">1</id>
+    <seat-number type="integer">34</seat-number>
+    <order-id type="integer">1</order-id>
+    <created-at type="dateTime">2015-02-22T12:43:05Z</created-at>
+    <updated-at type="dateTime">2015-02-22T12:43:05Z</updated-at>
+  </reservation>
+  <reservation>
+    <id type="integer">2</id>
+    <seat-number type="integer">42</seat-number>
+    <order-id type="integer">1</order-id>
+    <created-at type="dateTime">2015-02-22T12:56:10Z</created-at>
+    <updated-at type="dateTime">2015-02-22T12:56:10Z</updated-at>
+  </reservation>
+  <reservation>
+    <id type="integer">3</id>
+    <seat-number type="integer">1</seat-number>
+    <order-id type="integer">2</order-id>
+    <created-at type="dateTime">2015-02-24T09:22:11Z</created-at>
+    <updated-at type="dateTime">2015-02-24T09:22:11Z</updated-at>
+  </reservation>
+  <reservation>
+    <id type="integer">4</id>
+    <seat-number type="integer">1</seat-number>
+    <order-id type="integer">3</order-id>
+    <created-at type="dateTime">2015-02-24T17:29:05Z</created-at>
+    <updated-at type="dateTime">2015-02-24T17:29:05Z</updated-at>
+  </reservation>
+  <reservation>
+    <id type="integer">5</id>
+    <seat-number type="integer">2</seat-number>
+    <order-id type="integer">3</order-id>
+    <created-at type="dateTime">2015-02-24T17:29:19Z</created-at>
+    <updated-at type="dateTime">2015-02-24T17:29:19Z</updated-at>
+  </reservation>
+  <reservation>
+    <id type="integer">6</id>
+    <seat-number type="integer">3</seat-number>
+    <order-id type="integer">3</order-id>
+    <created-at type="dateTime">2015-02-24T17:29:28Z</created-at>
+    <updated-at type="dateTime">2015-02-24T17:29:28Z</updated-at>
+  </reservation>
+  <reservation>
+    <id type="integer">7</id>
+    <seat-number type="integer">23</seat-number>
+    <order-id type="integer">4</order-id>
+    <created-at type="dateTime">2015-03-02T16:02:41Z</created-at>
+    <updated-at type="dateTime">2015-03-02T16:02:41Z</updated-at>
+  </reservation>
+  <reservation>
+    <id type="integer">8</id>
+    <seat-number type="integer">24</seat-number>
+    <order-id type="integer">4</order-id>
+    <created-at type="dateTime">2015-03-02T16:02:49Z</created-at>
+    <updated-at type="dateTime">2015-03-02T16:02:49Z</updated-at>
+  </reservation>
+  <reservation>
+    <id type="integer">9</id>
+    <seat-number type="integer">0</seat-number>
+    <order-id type="integer">5</order-id>
+    <created-at type="dateTime">2015-03-02T16:03:02Z</created-at>
+    <updated-at type="dateTime">2015-03-02T16:03:02Z</updated-at>
+  </reservation>
+  <reservation>
+    <id type="integer">10</id>
+    <seat-number type="integer">32</seat-number>
+    <order-id type="integer">6</order-id>
+    <created-at type="dateTime">2015-03-02T16:03:17Z</created-at>
+    <updated-at type="dateTime">2015-03-02T16:03:17Z</updated-at>
+  </reservation>
+  <reservation>
+    <id type="integer">11</id>
+    <seat-number type="integer">33</seat-number>
+    <order-id type="integer">6</order-id>
+    <created-at type="dateTime">2015-03-02T16:03:25Z</created-at>
+    <updated-at type="dateTime">2015-03-02T16:03:25Z</updated-at>
+  </reservation>
+  <reservation>
+    <id type="integer">12</id>
+    <seat-number type="integer">34</seat-number>
+    <order-id type="integer">6</order-id>
+    <created-at type="dateTime">2015-03-02T16:03:32Z</created-at>
+    <updated-at type="dateTime">2015-03-02T16:03:32Z</updated-at>
+  </reservation>
+  <reservation>
+    <id type="integer">13</id>
+    <seat-number type="integer">11</seat-number>
+    <order-id type="integer">7</order-id>
+    <created-at type="dateTime">2015-03-02T16:03:46Z</created-at>
+    <updated-at type="dateTime">2015-03-02T16:03:46Z</updated-at>
+  </reservation>
+  <reservation>
+    <id type="integer">14</id>
+    <seat-number type="integer">8</seat-number>
+    <order-id type="integer">8</order-id>
+    <created-at type="dateTime">2015-03-02T16:03:56Z</created-at>
+    <updated-at type="dateTime">2015-03-02T16:03:56Z</updated-at>
+  </reservation>
+  <reservation>
+    <id type="integer">15</id>
+    <seat-number type="integer">5</seat-number>
+    <order-id type="integer">9</order-id>
+    <created-at type="dateTime">2015-03-02T16:04:09Z</created-at>
+    <updated-at type="dateTime">2015-03-02T16:04:09Z</updated-at>
+  </reservation>
+  <reservation>
+    <id type="integer">16</id>
+    <seat-number type="integer">6</seat-number>
+    <order-id type="integer">9</order-id>
+    <created-at type="dateTime">2015-03-02T16:04:18Z</created-at>
+    <updated-at type="dateTime">2015-03-02T16:04:18Z</updated-at>
+  </reservation>
+  <reservation>
+    <id type="integer">17</id>
+    <seat-number type="integer">7</seat-number>
+    <order-id type="integer">9</order-id>
+    <created-at type="dateTime">2015-03-02T16:04:25Z</created-at>
+    <updated-at type="dateTime">2015-03-02T16:04:25Z</updated-at>
+  </reservation>
+  <reservation>
+    <id type="integer">18</id>
+    <seat-number type="integer">42</seat-number>
+    <order-id type="integer">10</order-id>
+    <created-at type="dateTime">2015-03-02T16:04:40Z</created-at>
+    <updated-at type="dateTime">2015-03-02T16:04:40Z</updated-at>
+  </reservation>
+</reservations>
