@@ -30,7 +30,6 @@ public interface MovieDAO {
      */
     public interface Filter {
 
-        public boolean isValid(Movie movie);
     }
 
     /**

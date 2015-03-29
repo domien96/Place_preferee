@@ -1,6 +1,7 @@
 package preferee.data.access.testServer;
 
 import preferee.data.*;
+import preferee.data.access.persistent_xml_processing.jaxb.XMLconverter;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -38,11 +39,12 @@ public class LocalTestServer {
             e.printStackTrace();
         }
         // data lokaal opslaan en bijhouden
-        movies = new ResourceFileReader<MovieArray>(MovieArray.class).getItemFrom(properties.getProperty("moviesPath")).getItemsAsMap();
-        orders = new ResourceFileReader<OrderArray>(OrderArray.class).getItemFrom(properties.getProperty("ordersPath")).getItemsAsMap();
-        reservations = new ResourceFileReader<ReservationArray>(ReservationArray.class).getItemFrom(properties.getProperty("reservationsPath")).getItemsAsMap();
-        screens = new ResourceFileReader<ScreenArray>(ScreenArray.class).getItemFrom(properties.getProperty("screensPath")).getItemsAsMap();
-        showings = new ResourceFileReader<ShowingArray>(ShowingArray.class).getItemFrom(properties.getProperty("showingsPath")).getItemsAsMap();
+        String protocol = "file:///"; // protocol
+        movies = new XMLconverter<MovieArray>(MovieArray.class).getItemFromURL(protocol +  properties.getProperty("moviesPath")).getItemsAsMap();
+        orders = new XMLconverter<OrderArray>(OrderArray.class).getItemFromURL(protocol + properties.getProperty("ordersPath")).getItemsAsMap();
+        reservations = new XMLconverter<ReservationArray>(ReservationArray.class).getItemFromURL(protocol + properties.getProperty("reservationsPath")).getItemsAsMap();
+        screens = new XMLconverter<ScreenArray>(ScreenArray.class).getItemFromURL(protocol + properties.getProperty("screensPath")).getItemsAsMap();
+        showings = new XMLconverter<ShowingArray>(ShowingArray.class).getItemFromURL(protocol + properties.getProperty("showingsPath")).getItemsAsMap();
     }
 
     // GETTERS

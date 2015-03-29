@@ -7,13 +7,13 @@ import preferee.data.access.*;
  */
 public class TestProvider implements DataAccessProvider {
 
-    LocalTestServer serverConnectie; // aka connection
+    LocalTestServer server; // aka connection
 
     /**
      * Maken van testServer
      */
     public TestProvider(String propertiesResource) {
-        this.serverConnectie = new LocalTestServer(propertiesResource);
+        this.server = new LocalTestServer(propertiesResource);
     }
 
     private MovieDAO movieDAO;
@@ -24,7 +24,7 @@ public class TestProvider implements DataAccessProvider {
     @Override
     public MovieDAO getMovieDAO() {
         if (movieDAO == null) {
-            movieDAO = new TestMovieDAO(serverConnectie);
+            movieDAO = new TestMovieDAO(server);
         }
         return movieDAO;
     }
@@ -37,7 +37,7 @@ public class TestProvider implements DataAccessProvider {
     @Override
     public ScreenDAO getScreenDAO() {
         if (screenDAO == null) {
-            screenDAO = new TestScreenDAO(serverConnectie);
+            screenDAO = new TestScreenDAO(server);
         }
         return screenDAO;
     }
@@ -50,7 +50,7 @@ public class TestProvider implements DataAccessProvider {
     @Override
     public ShowingDAO getShowingDAO() {
         if (showingDAO == null) {
-            showingDAO = new TestShowingDAO(serverConnectie);
+            showingDAO = new TestShowingDAO(server);
         }
         return showingDAO;
     }
@@ -63,7 +63,7 @@ public class TestProvider implements DataAccessProvider {
     @Override
     public OrderDAO getOrderDAO() {
         if (orderDAO == null) {
-            orderDAO = new TestOrderDAO(serverConnectie);
+            orderDAO = new TestOrderDAO(server);
         }
         return orderDAO;
     }
@@ -116,6 +116,7 @@ public class TestProvider implements DataAccessProvider {
     @Override
     public void close() throws Exception {
         //TODO
+        server = null; // verwijzing/connectie met testServer verbroken.
         System.out.print("< Provider close >");
     }
 }

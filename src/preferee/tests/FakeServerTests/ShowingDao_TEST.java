@@ -86,7 +86,7 @@ public class ShowingDao_TEST {
 
     public void testFromTimeFilters() {
         System.out.println("\n----------------\ntestFromTimeFilters \n----------------");
-        LocalTime time = LocalTime.of(23,0,0);
+        LocalTime time = LocalTime.of(20,0,0);
         Iterable<Showing> lijst = dao.listFiltered(dao.fromTimeOfDay(time));
         for ( Showing showing : lijst ) {
             System.out.println(showing.getId());

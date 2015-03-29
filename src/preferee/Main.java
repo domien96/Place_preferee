@@ -7,10 +7,7 @@ import javafx.stage.Stage;
 import preferee.data.access.DataAccessProvider;
 import preferee.data.access.Providers;
 
-import java.io.InputStream;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 /**
  * JavaFX-hoofdprogramma waarmee de toepassing wordt opgestart,
@@ -25,7 +22,7 @@ public class Main extends Application {
         if (parameters.getUnnamed().size() == 0) {
             provider = Providers.createTestProvider();
         } else { // >= 1
-            provider = Providers.createProvider(new URL(parameters.getUnnamed().get(0)));
+            provider = Providers.createProvider(new URL("http://" +  parameters.getUnnamed().get(0)));
         }
 
         stage.setTitle("Place Préférée");

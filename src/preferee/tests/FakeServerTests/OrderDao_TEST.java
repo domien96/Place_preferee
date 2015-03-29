@@ -12,7 +12,7 @@ import preferee.data.access.Providers;
 public class OrderDao_TEST {
     public static void main(String[] args) {
         try(
-        DataAccessProvider provider = Providers.createTestProvider();
+        DataAccessProvider provider = Providers.createTestProvider()
 
         ) {
             OrderDAO dao = provider.getOrderDAO();
@@ -22,7 +22,7 @@ public class OrderDao_TEST {
              */
 
             dao.createReservation(99,4);
-            dao.createReservation(98,4);
+            dao.createReservation(99,4);
             for ( Reservation res: dao.listReservations(4) ) {
                 System.out.println(res.getOrderId());
                 System.out.println(res.getId());

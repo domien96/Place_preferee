@@ -49,12 +49,20 @@ public class TestMovieDAO extends TestAbstractDAO implements MovieDAO{
         List<Movie> movies = new ArrayList<>(filtered); // itereren , voorkomt concurrentmodificationexception
         for (Movie movie : movies ) {
             for (Filter filter : filters) {
-                if (!filter.isValid(movie)) {
+                if (!((MovieFilter) filter).isValid(movie)) {
                     filtered.remove(movie);
                 }
             }
         }
         return filtered;
+    }
+
+    /**
+     * Filter die kan gebruikt worden door {@link #listFiltered} om movies te filteren. Dergelijke filters
+     * worden aangemaakt met de {@code by...} methoden
+     */
+    private interface MovieFilter extends Filter {
+        boolean isValid(Movie movie);
     }
 
     /**
@@ -64,7 +72,8 @@ public class TestMovieDAO extends TestAbstractDAO implements MovieDAO{
      */
     @Override
     public Filter byRating(String rating) {
-        return (Movie movie) -> movie.getRating().equals(rating);
+        MovieFilter filter = (Movie movie) -> movie.getRating().equals(rating);
+        return filter;
 }
 
     /**
@@ -74,7 +83,8 @@ public class TestMovieDAO extends TestAbstractDAO implements MovieDAO{
      */
     @Override
     public Filter byYear(String year) {
-        return (Movie movie) -> Integer.toString(movie.getYear()).equals(year);
+        MovieFilter filter = (Movie movie) -> Integer.toString(movie.getYear()).equals(year);
+        return filter;
     }
 
     /**
@@ -84,7 +94,8 @@ public class TestMovieDAO extends TestAbstractDAO implements MovieDAO{
      */
     @Override
     public Filter byGenre(String genre) {
-        return (Movie movie) -> movie.getGenre().equals(genre);
+        MovieFilter filter = (Movie movie) -> movie.getGenre().equals(genre);
+        return filter;
     }
 
     /**
@@ -94,6 +105,7 @@ public class TestMovieDAO extends TestAbstractDAO implements MovieDAO{
      */
     @Override
     public Filter byLanguage(String language) {
-        return (Movie movie) -> movie.getLanguage().equals(language);
+        MovieFilter filter = (Movie movie) -> movie.getLanguage().equals(language);
+        return filter;
     }
 }

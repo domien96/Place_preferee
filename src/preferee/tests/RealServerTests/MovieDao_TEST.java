@@ -41,7 +41,7 @@ public class MovieDao_TEST {
     public void testGetters() {
         System.out.println("----------------\ntestGetters \n----------------");
         MovieDAO mdao = dap.getMovieDAO();
-        System.out.println(mdao.getMovie(1).getTitle());
+        System.out.println(mdao.getMovie(3).getTitle());
         //System.out.println(mdao.getMovie(333).getTitle());
 
         /**for (Movie movie : ((ServerMovieDAO) mdao).getall().values())

@@ -8,28 +8,20 @@ import preferee.data.access.ScreenDAO;
 /**
  * Created by domien on 11/03/2015.
  */
-public class ServerScreenDAO extends ServerAbstractDAO implements ScreenDAO {
+public class ServerScreenDAO extends ServerAbstractDAO<Screen,ScreenArray> implements ScreenDAO {
 
-    public ServerScreenDAO(String resourceURL) { super(resourceURL); }
-
-    /**
-     *  Kan een online XML-bestand omzetten naar respectievelijk één screen-object, meerdere screen-objecten.
-     *  Zo'n downloader moet wel weten welke klasse objecten hij moet vertalen aangezien de downloader met type variabelen werkt.
-     */
-    ResourceWebReader<Screen> singleResourceWebReader = new ResourceWebReader<>(Screen.class);
-    ResourceWebReader<ScreenArray> multipleResourceWebReader = new ResourceWebReader<>(ScreenArray.class);
-
+    public ServerScreenDAO(String resourceURL) { super(resourceURL, Screen.class, ScreenArray.class); }
 
     /**
      * De zaal die overeenkomt met het opgegeven identificatienummer.
      * Gooit een uitzondering op als een dergelijke zaal niet bestaat.
      *
-     * @param id
+     * @param id: id
      */
     @Override
     public Screen getScreen(int id) throws DataAccessException {
-        String url = this.orders_URL + "/" + Integer.toString(id) + ".xml";
-        return singleResourceWebReader.getItemFromURL(url);
+        String url = this.itemList_URL + "/" + Integer.toString(id) + ".xml";
+        return singleItemConverter.getItemFromURL(url);
     }
 
     /**
@@ -37,7 +29,7 @@ public class ServerScreenDAO extends ServerAbstractDAO implements ScreenDAO {
      */
     @Override
     public Iterable<Screen> listAll() throws DataAccessException {
-        String url = this.orders_URL + ".xml";
-        return multipleResourceWebReader.getItemFromURL(url).getItemsAsMap().values();
+        String url = this.itemList_URL + ".xml";
+        return multipleItemsConverter.getItemFromURL(url).getItemsAsMap().values();
     }
 }

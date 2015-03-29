@@ -34,7 +34,7 @@ public class TestShowingDAO extends TestAbstractDAO implements ShowingDAO {
         List<Showing> showings = new ArrayList<>(filtered); // itereren , voorkomt concurrentmodificationexception
         for (Showing showing : showings ) {
             for (Filter filter : filters) {
-                if (!filter.isValid(showing)) {
+                if (!((ShowingFilter) filter).isValid(showing)) {
                     filtered.remove(showing);
                 }
             }
@@ -42,28 +42,43 @@ public class TestShowingDAO extends TestAbstractDAO implements ShowingDAO {
         return filtered;
     }
 
+    /**
+     * Filter die kan gebruikt worden door {@link #listFiltered} om showings te filteren. Dergelijke filters
+     * worden aangemaakt met de {@code by...} methoden
+     */
+    private interface ShowingFilter extends Filter{
+        boolean isValid(Showing showing);
+    }
+
+
+
     @Override
     public Filter byScreen(int screenId) {
-        return showing -> showing.getScreenId() == screenId;
+        ShowingFilter filter = showing -> showing.getScreenId() == screenId;
+        return filter;
     }
 
     @Override
     public Filter byDay(LocalDate date) {
-        return showing -> showing.getTime().toLocalDate().equals(date);
+        ShowingFilter filter = showing -> showing.getTime().toLocalDate().equals(date);
+        return filter;
     }
 
     @Override
     public Filter byTimeOfDay(LocalTime time) {
-        return showing -> showing.getTime().toLocalTime().equals(time);
+        ShowingFilter filter = showing -> showing.getTime().toLocalTime().equals(time);
+        return filter;
     }
 
     @Override
     public Filter fromTimeOfDay(LocalTime time) {
-        return showing -> showing.getTime().toLocalTime().toSecondOfDay() - time.toSecondOfDay() >= 0;
+        ShowingFilter filter = showing -> showing.getTime().toLocalTime().toSecondOfDay() - time.toSecondOfDay() >= 0;
+        return filter;
     }
 
     @Override
     public Filter byMovie(int movieId) {
-        return showing -> showing.getMovieId() == movieId;
+        ShowingFilter filter = showing -> showing.getMovieId() == movieId;
+        return filter;
     }
 }

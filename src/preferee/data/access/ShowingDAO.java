@@ -32,9 +32,7 @@ public interface ShowingDAO {
      * worden aangemaakt met de {@code by...} methoden
      */
     public interface Filter {
-        boolean isValid(Showing showing);
 
-       // String getQueryComponent();
     }
 
     /**
