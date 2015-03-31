@@ -29,8 +29,8 @@ public class OrderDao_TEST {
             testGetters();
             testGetAll();
             testGetAllReservations();
-            testMakeOrder();
-            testMakeReservation();
+            //for (int i=0; i<99; i++) { testMakeOrder();}
+            //testMakeReservation();
 
         } catch (DataAccessException e) {
             System.err.println("DataAccesException opgevangen in TEST: " + e.getMessage());
@@ -43,7 +43,7 @@ public class OrderDao_TEST {
 
     private void testMakeOrder() {
         System.out.println("----------------\ntestCreatorsORDER \n----------------");
-        Order newOrder = dap.getOrderDAO().createOrder("test",1);
+        Order newOrder = dap.getOrderDAO().createOrder("mehmet",21);
         System.out.println(newOrder.getName()+" "+newOrder.getId()+" "+newOrder.getShowingId());
     }
 

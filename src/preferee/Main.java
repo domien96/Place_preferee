@@ -18,6 +18,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         // Dit zijn de opdrachtlijnparameters:
         Parameters parameters = getParameters();
+
         DataAccessProvider provider;
         if (parameters.getUnnamed().size() == 0) {
             provider = Providers.createTestProvider();
@@ -30,6 +31,7 @@ public class Main extends Application {
         stage.show();
 
         //TODO close provider
+        // if (quit == true) provider.close();
     }
 
     /**

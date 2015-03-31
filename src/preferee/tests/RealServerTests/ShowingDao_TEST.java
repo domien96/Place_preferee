@@ -55,7 +55,7 @@ public class ShowingDao_TEST {
         System.out.println("\n----------------\ntestFilters \n----------------");
         ShowingDAO dao = dap.getShowingDAO();
         //Iterable<Showing> lijst = dao.listFiltered(dao.byMovie(4));
-        Iterable<Showing> lijst = dao.listFiltered(dao.byScreen(4));
+        Iterable<Showing> lijst = dao.listFiltered(dao.byScreen(45));
         int count = 1;
         for (Showing showing : lijst) {
             System.out.println(count +" : "+ showing.getId());

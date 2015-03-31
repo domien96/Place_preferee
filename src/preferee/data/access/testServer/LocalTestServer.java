@@ -39,12 +39,12 @@ public class LocalTestServer {
             e.printStackTrace();
         }
         // data lokaal opslaan en bijhouden
-        String protocol = "file:///"; // protocol
-        movies = new XMLconverter<MovieArray>(MovieArray.class).getItemFromURL(protocol +  properties.getProperty("moviesPath")).getItemsAsMap();
-        orders = new XMLconverter<OrderArray>(OrderArray.class).getItemFromURL(protocol + properties.getProperty("ordersPath")).getItemsAsMap();
-        reservations = new XMLconverter<ReservationArray>(ReservationArray.class).getItemFromURL(protocol + properties.getProperty("reservationsPath")).getItemsAsMap();
-        screens = new XMLconverter<ScreenArray>(ScreenArray.class).getItemFromURL(protocol + properties.getProperty("screensPath")).getItemsAsMap();
-        showings = new XMLconverter<ShowingArray>(ShowingArray.class).getItemFromURL(protocol + properties.getProperty("showingsPath")).getItemsAsMap();
+        String prefix = "file:///" + getClass().getClassLoader().getResource(".").getPath(); // protocol + application path
+        movies = new XMLconverter<MovieArray>(MovieArray.class).getItemFromURL(prefix +  properties.getProperty("moviesPath")).getItemsAsMap();
+        orders = new XMLconverter<OrderArray>(OrderArray.class).getItemFromURL(prefix + properties.getProperty("ordersPath")).getItemsAsMap();
+        reservations = new XMLconverter<ReservationArray>(ReservationArray.class).getItemFromURL(prefix + properties.getProperty("reservationsPath")).getItemsAsMap();
+        screens = new XMLconverter<ScreenArray>(ScreenArray.class).getItemFromURL(prefix + properties.getProperty("screensPath")).getItemsAsMap();
+        showings = new XMLconverter<ShowingArray>(ShowingArray.class).getItemFromURL(prefix + properties.getProperty("showingsPath")).getItemsAsMap();
     }
 
     // GETTERS

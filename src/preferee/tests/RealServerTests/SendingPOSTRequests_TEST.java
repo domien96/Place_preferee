@@ -27,7 +27,7 @@ public class SendingPOSTRequests_TEST {
 
     private void createNewReservation() throws Exception {
 
-            String url = "http://esari.ugent.be/orders.xml";
+            String url = "http://esari.ugent.be/screens.xml";
             String charset = StandardCharsets.UTF_8.name();
             String param1 = "Fifty shades of simon  ( ͡° ͜ʖ ͡°)";
             String param2 = "17";
@@ -35,7 +35,7 @@ public class SendingPOSTRequests_TEST {
             String query = String.format("name=%s&showing_id=%s",
                     URLEncoder.encode(param1, charset),
                     URLEncoder.encode(param2, charset));
-
+            query="name=testzaal&rows=11&cols=11&number_of_seats=121";
         //DEEL2
 
             URLConnection connection = new URL(url).openConnection();
