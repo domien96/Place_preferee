@@ -52,7 +52,7 @@ public class MovieDao_TEST {
     public void testFilters() {
         System.out.println("\n----------------\ntestFilters \n----------------");
         MovieDAO mdao = dap.getMovieDAO();
-        Iterable<Movie> lijst = mdao.listFiltered(mdao.byGenre("Animation"));
+        Iterable<Movie> lijst = mdao.listFiltered(mdao.byGenre("Anilmation"));
         //Movie[] lijst = ((ServerMovieDAO)mdao).getall();
         int count = 1;
         for (Movie movie : lijst) {

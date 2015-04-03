@@ -1,4 +1,4 @@
-package preferee.data.access.server;
+package preferee.data.access.server.dao;
 
 import preferee.data.Screen;
 import preferee.data.ScreenArray;
@@ -21,7 +21,7 @@ public class ServerScreenDAO extends ServerAbstractDAO<Screen,ScreenArray> imple
     @Override
     public Screen getScreen(int id) throws DataAccessException {
         String url = this.itemList_URL + "/" + Integer.toString(id) + ".xml";
-        return singleItemConverter.getItemFromURL(url);
+        return singleResourceUnmarshaller.unmarshall(url);
     }
 
     /**
@@ -30,6 +30,6 @@ public class ServerScreenDAO extends ServerAbstractDAO<Screen,ScreenArray> imple
     @Override
     public Iterable<Screen> listAll() throws DataAccessException {
         String url = this.itemList_URL + ".xml";
-        return multipleItemsConverter.getItemFromURL(url).getItemsAsMap().values();
+        return ResourceArrayUnmarshaller.unmarshall(url).getItemsAsMap().values();
     }
 }

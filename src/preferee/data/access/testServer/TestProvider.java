@@ -1,13 +1,18 @@
 package preferee.data.access.testServer;
 
 import preferee.data.access.*;
+import preferee.data.access.testServer.testServer.LocalTestServer;
+import preferee.data.access.testServer.dao.TestMovieDAO;
+import preferee.data.access.testServer.dao.TestOrderDAO;
+import preferee.data.access.testServer.dao.TestScreenDAO;
+import preferee.data.access.testServer.dao.TestShowingDAO;
 
 /**
  * Created by domien on 9/03/2015.
  */
 public class TestProvider implements DataAccessProvider {
 
-    LocalTestServer server; // aka connection
+    LocalTestServer server; // aka http_post_request
 
     /**
      * Maken van testServer

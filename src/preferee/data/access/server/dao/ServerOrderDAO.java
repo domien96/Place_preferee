@@ -1,12 +1,12 @@
-package preferee.data.access.server;
+package preferee.data.access.server.dao;
 
 import preferee.data.Order;
 import preferee.data.OrderArray;
 import preferee.data.Reservation;
 import preferee.data.ReservationArray;
 import preferee.data.access.DataAccessException;
-import preferee.data.access.persistent_xml_processing.POST_requester;
-import preferee.data.access.persistent_xml_processing.jaxb.XMLconverter;
+import preferee.data.access.server.http_post_request.POST_requester;
+import preferee.data.access.jaxb.XMLunmarshaller;
 import preferee.data.access.OrderDAO;
 
 import java.io.IOException;
@@ -32,8 +32,8 @@ public class ServerOrderDAO extends ServerAbstractDAO<Order,OrderArray> implemen
      *  OrderDAO kan bovenop de 2 order-converters ook nog één reservation-object of meerdere reservation-objecten uit een XML bestand halen.
      *  M.a.w. deze klasse bevat nog 2 extra converters, 4 dus in totaal.
      */
-    XMLconverter<Reservation> singleReservationConverter = new XMLconverter<>(Reservation.class);//singleReservationDownloader is momenteel enkel nodig in (@code createReservation).
-    XMLconverter<ReservationArray> multipleReservationConverter = new XMLconverter<>(ReservationArray.class);
+    XMLunmarshaller<Reservation> singleReservationConverter = new XMLunmarshaller<>(Reservation.class);//singleReservationDownloader is momenteel enkel nodig in (@code createReservation).
+    XMLunmarshaller<ReservationArray> multipleReservationConverter = new XMLunmarshaller<>(ReservationArray.class);
 
 
     /**
@@ -45,7 +45,7 @@ public class ServerOrderDAO extends ServerAbstractDAO<Order,OrderArray> implemen
     @Override
     public Order getOrder(int id) throws DataAccessException {
         String url = this.itemList_URL + "/" + Integer.toString(id) + ".xml";
-        return singleItemConverter.getItemFromURL(url);
+        return singleResourceUnmarshaller.unmarshall(url);
     }
 
     /**
@@ -56,7 +56,7 @@ public class ServerOrderDAO extends ServerAbstractDAO<Order,OrderArray> implemen
     @Override
     public Iterable<Reservation> listReservations(int orderId) throws DataAccessException { // uit reservations halen
         String url = this.reservation_URL + ".xml?order_id=" + orderId ;
-        return multipleReservationConverter.getItemFromURL(url).getItemsAsMap().values();
+        return multipleReservationConverter.unmarshall(url).getItemsAsMap().values();
     }
 
     /**
@@ -88,7 +88,7 @@ public class ServerOrderDAO extends ServerAbstractDAO<Order,OrderArray> implemen
         // 2) response omzetten in Order-object.
         try (InputStream response = connection.getInputStream();) {
 
-            return singleItemConverter.getItemFromStream(response);
+            return singleResourceUnmarshaller.unmarshall(response);
         } catch (IOException e) {
             throw new DataAccessException(e.getMessage());
         }
@@ -124,7 +124,8 @@ public class ServerOrderDAO extends ServerAbstractDAO<Order,OrderArray> implemen
         // 2) response omzetten in Order-object.
         try (InputStream response = connection.getInputStream();) {
 
-            return singleReservationConverter.getItemFromStream(response);
+            //todo adhv response kijken of zitje al bezet is, wordt nog gemaakt op server.
+            return singleReservationConverter.unmarshall(response);
         } catch (IOException e) {
             throw new DataAccessException(e.getMessage());
         }
@@ -138,6 +139,6 @@ public class ServerOrderDAO extends ServerAbstractDAO<Order,OrderArray> implemen
     @Override
     public Iterable<Order> listOrders(int showingId) { // uit orders halen
         String url = this.itemList_URL + ".xml?showing_id=" + showingId ;
-        return multipleItemsConverter.getItemFromURL(url).getItemsAsMap().values();
+        return ResourceArrayUnmarshaller.unmarshall(url).getItemsAsMap().values();
     }
 }

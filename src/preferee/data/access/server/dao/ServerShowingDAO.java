@@ -1,4 +1,4 @@
-package preferee.data.access.server;
+package preferee.data.access.server.dao;
 
 import preferee.data.Showing;
 import preferee.data.ShowingArray;
@@ -7,6 +7,7 @@ import preferee.data.access.ShowingDAO;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 /**
  * Created by domien on 11/03/2015.
@@ -25,7 +26,7 @@ public class ServerShowingDAO extends ServerAbstractDAO<Showing,ShowingArray> im
     @Override
     public Showing getShowing(int id) throws DataAccessException {
         String url = this.itemList_URL + "/" + Integer.toString(id) + ".xml";
-        return singleItemConverter.getItemFromURL(url);
+        return singleResourceUnmarshaller.unmarshall(url);
     }
 
     /**
@@ -50,7 +51,10 @@ public class ServerShowingDAO extends ServerAbstractDAO<Showing,ShowingArray> im
         String url = urlBuilder.toString(); // einde van string-building.
 
         // URL opvragen en omzetten in Movie objecten mbv de multipleResourceDownloader en JAXB (singletons zullen ook werken)
-        return this.multipleItemsConverter.getItemFromURL(url).getItemsAsMap().values();
+        ShowingArray filtered = this.ResourceArrayUnmarshaller.unmarshall(url);
+        if (filtered == null)
+            return new ArrayList<>();
+        return filtered.getItemsAsMap().values();
     }
 
     /**

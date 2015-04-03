@@ -1,8 +1,9 @@
-package preferee.data.access.testServer;
+package preferee.data.access.testServer.dao;
 
 import preferee.data.Showing;
 import preferee.data.access.DataAccessException;
 import preferee.data.access.ShowingDAO;
+import preferee.data.access.testServer.testServer.LocalTestServer;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

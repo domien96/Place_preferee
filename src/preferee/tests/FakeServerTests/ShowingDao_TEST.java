@@ -6,6 +6,7 @@ import preferee.data.access.DataAccessProvider;
 import preferee.data.access.Providers;
 import preferee.data.access.ShowingDAO;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -28,6 +29,8 @@ public class ShowingDao_TEST {
             testDateFilters();
             testTimeFilters();
             testFromTimeFilters();
+            Object o = new File("src/preferee/resources/movies.xml");
+            int a = 4;
 
         } catch (DataAccessException e) {
             System.err.println(e.getMessage());

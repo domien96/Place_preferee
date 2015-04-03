@@ -16,7 +16,7 @@ import java.util.Map;
  */
 
 @XmlRootElement(name="orders")
-public class OrderArray {
+public class OrderArray implements ResourceArray {
     private Order[] items;
 
     @XmlElement(name="order")

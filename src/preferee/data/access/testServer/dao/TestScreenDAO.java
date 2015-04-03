@@ -1,8 +1,9 @@
-package preferee.data.access.testServer;
+package preferee.data.access.testServer.dao;
 
 import preferee.data.Screen;
 import preferee.data.access.DataAccessException;
 import preferee.data.access.ScreenDAO;
+import preferee.data.access.testServer.testServer.LocalTestServer;
 
 import java.util.ArrayList;
 

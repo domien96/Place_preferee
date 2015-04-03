@@ -1,4 +1,6 @@
-package preferee.data.access.testServer;
+package preferee.data.access.testServer.dao;
+
+import preferee.data.access.testServer.testServer.LocalTestServer;
 
 /**
  * Created by domien on 19/03/2015.

@@ -39,7 +39,7 @@ public class SendingPOSTRequests_TEST {
         //DEEL2
 
             URLConnection connection = new URL(url).openConnection();
-            //System.out.println(((HttpURLConnection)connection).getResponseCode());
+            //System.out.println(((HttpURLConnection)http_post_request).getResponseCode());
             connection.setDoOutput(true); // Triggers POST.
             connection.setRequestProperty("Accept-Charset", charset);
             connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=" + charset);
@@ -70,7 +70,7 @@ public class SendingPOSTRequests_TEST {
                 }
             }
         }
-                /**try (InputStream response = connection.getInputStream();) {
+                /**try (InputStream response = http_post_request.getInputStream();) {
 
                 }*/
     }

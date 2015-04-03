@@ -1,8 +1,9 @@
-package preferee.data.access.testServer;
+package preferee.data.access.testServer.dao;
 
 import preferee.data.Movie;
 import preferee.data.access.DataAccessException;
 import preferee.data.access.MovieDAO;
+import preferee.data.access.testServer.testServer.LocalTestServer;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

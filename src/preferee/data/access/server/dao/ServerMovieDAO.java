@@ -1,9 +1,11 @@
-package preferee.data.access.server;
+package preferee.data.access.server.dao;
 
 import preferee.data.Movie;
 import preferee.data.MovieArray;
 import preferee.data.access.DataAccessException;
 import preferee.data.access.MovieDAO;
+
+import java.util.ArrayList;
 
 /**
  * Created by domien on 11/03/2015.
@@ -25,7 +27,7 @@ public class ServerMovieDAO extends ServerAbstractDAO<Movie,MovieArray> implemen
     @Override
     public Movie getMovie(int id) throws DataAccessException {
         String url = this.itemList_URL + "/" + Integer.toString(id) + ".xml";
-        return singleItemConverter.getItemFromURL(url);
+        return singleResourceUnmarshaller.unmarshall(url);
     }
 
     /**
@@ -48,7 +50,10 @@ public class ServerMovieDAO extends ServerAbstractDAO<Movie,MovieArray> implemen
             String url = urlBuilder.toString(); // einde van string-building.
 
             // URL opvragen en omzetten in Movie objecten mbv de multipleResourceDownloader en JAXB (singletons zullen ook werken)
-            return this.multipleItemsConverter.getItemFromURL(url).getItemsAsMap().values();
+            MovieArray filtered = this.ResourceArrayUnmarshaller.unmarshall(url);
+            if (filtered == null)
+                return new ArrayList<>();
+            return filtered.getItemsAsMap().values();
     }
 
     /**
@@ -104,11 +109,6 @@ public class ServerMovieDAO extends ServerAbstractDAO<Movie,MovieArray> implemen
         MovieFilter filter = () -> "language=" + language;
         return filter;
     }
-
-    /** TODO    : dit wegdoen , was voor testing.
-    public Movie[] getall() {
-        return this.multipleResourceDownloader.getItemFromURL(this.itemList_URL+".xml?year=2014&").getItems();
-    }*/
 }
 
 

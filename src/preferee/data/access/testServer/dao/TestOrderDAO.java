@@ -1,9 +1,10 @@
-package preferee.data.access.testServer;
+package preferee.data.access.testServer.dao;
 
 import preferee.data.Order;
 import preferee.data.Reservation;
 import preferee.data.access.DataAccessException;
 import preferee.data.access.OrderDAO;
+import preferee.data.access.testServer.testServer.LocalTestServer;
 
 import java.util.Collection;
 import java.util.LinkedList;

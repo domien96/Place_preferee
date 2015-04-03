@@ -52,8 +52,9 @@ public class Showing implements Resource {
      */
     public LocalDateTime getTime() {return time;}
 
-    private String tijdstip;
-    private Date datum;
+    // hieronder: merge-proces datetime en date => localdatetime
+    private String tijdstip; // 2001-01-01THH:mm:ssZ
+    private Date datum; // jjjj-mm-dd
 
     @XmlElement(name="time")
     private String getTijdstip() {
@@ -79,10 +80,10 @@ public class Showing implements Resource {
      * @param parent
      */
     private void afterUnmarshal(Unmarshaller unm, Object parent) {
-        // omzetten: String => LocaldateTime
+        // omzetten (@field tijdstip): String => LocaldateTime
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
         LocalDateTime dateTime = LocalDateTime.parse(this.tijdstip, formatter);
-        // omzetten: Date -> ZonedDateTime
+        // omzetten (@field datum): Date -> ZonedDateTime
         ZonedDateTime date = datum.toInstant().atZone(ZoneId.systemDefault());
         // Gebruiken van gewenste datum, gewenste tijd van (@var_dateTime) om een LocalDateTime--object te creëren.
         time = LocalDateTime.of( date.toLocalDate(), dateTime.toLocalTime() );
