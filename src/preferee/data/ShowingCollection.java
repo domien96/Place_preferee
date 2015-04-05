@@ -16,7 +16,7 @@ import java.util.Map;
  */
 
 @XmlRootElement(name="showings")
-public class ShowingArray implements ResourceArray {
+public class ShowingCollection implements ResourceCollection {
     private Showing[] items;
 
     @XmlElement(name = "showing")

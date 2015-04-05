@@ -4,7 +4,7 @@ import preferee.data.Order;
 import preferee.data.Reservation;
 import preferee.data.access.DataAccessException;
 import preferee.data.access.OrderDAO;
-import preferee.data.access.testServer.testServer.LocalTestServer;
+import preferee.data.access.testServer.resourcesCache.LocalTestServer;
 
 import java.util.Collection;
 import java.util.LinkedList;

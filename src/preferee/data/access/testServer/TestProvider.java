@@ -1,7 +1,7 @@
 package preferee.data.access.testServer;
 
 import preferee.data.access.*;
-import preferee.data.access.testServer.testServer.LocalTestServer;
+import preferee.data.access.testServer.resourcesCache.LocalTestServer;
 import preferee.data.access.testServer.dao.TestMovieDAO;
 import preferee.data.access.testServer.dao.TestOrderDAO;
 import preferee.data.access.testServer.dao.TestScreenDAO;
@@ -17,8 +17,8 @@ public class TestProvider implements DataAccessProvider {
     /**
      * Maken van testServer
      */
-    public TestProvider(String propertiesResource) {
-        this.server = new LocalTestServer(propertiesResource);
+    public TestProvider() {
+        this.server = new LocalTestServer();
     }
 
     private MovieDAO movieDAO;

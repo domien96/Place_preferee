@@ -1,16 +1,18 @@
 package preferee.data.access.server.dao;
 
 import preferee.data.Screen;
-import preferee.data.ScreenArray;
+import preferee.data.ScreenCollection;
 import preferee.data.access.DataAccessException;
 import preferee.data.access.ScreenDAO;
+
+import java.io.IOException;
 
 /**
  * Created by domien on 11/03/2015.
  */
-public class ServerScreenDAO extends ServerAbstractDAO<Screen,ScreenArray> implements ScreenDAO {
+public class ServerScreenDAO extends ServerAbstractDAO<Screen,ScreenCollection> implements ScreenDAO {
 
-    public ServerScreenDAO(String resourceURL) { super(resourceURL, Screen.class, ScreenArray.class); }
+    public ServerScreenDAO(String resourceURL) { super(resourceURL, Screen.class, ScreenCollection.class); }
 
     /**
      * De zaal die overeenkomt met het opgegeven identificatienummer.
@@ -20,8 +22,7 @@ public class ServerScreenDAO extends ServerAbstractDAO<Screen,ScreenArray> imple
      */
     @Override
     public Screen getScreen(int id) throws DataAccessException {
-        String url = this.itemList_URL + "/" + Integer.toString(id) + ".xml";
-        return singleResourceUnmarshaller.unmarshall(url);
+        return getResource(id);
     }
 
     /**
@@ -30,6 +31,10 @@ public class ServerScreenDAO extends ServerAbstractDAO<Screen,ScreenArray> imple
     @Override
     public Iterable<Screen> listAll() throws DataAccessException {
         String url = this.itemList_URL + ".xml";
-        return ResourceArrayUnmarshaller.unmarshall(url).getItemsAsMap().values();
+        try {
+            return multipleResourceUnmarshaller.unmarshall(url).getItemsAsMap().values();
+        } catch (IOException e) {
+            throw new DataAccessException(e.getMessage());
+        }
     }
 }

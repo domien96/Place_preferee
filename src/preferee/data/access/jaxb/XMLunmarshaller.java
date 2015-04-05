@@ -1,12 +1,9 @@
 package preferee.data.access.jaxb;
 
-import preferee.data.access.DataAccessException;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -32,19 +29,19 @@ public class XMLunmarshaller<T> {
     /**
      * Zet objecten om met gegeven inputstream.
      * @param xmlStream : Stream met het xml-bestand
-     * @return object van type T .
+     * @return object van type T of null indien het bestand niet leesbaar of niet het verwachte formaat heeft..
      */
     public T unmarshall(InputStream xmlStream) {
         JAXBContext jc;
         T item;
         try {
             jc = JAXBContext.newInstance(klasseObject);
-            item = (T) jc.createUnmarshaller().unmarshal(xmlStream);
+            item = (T) jc.createUnmarshaller().unmarshal(xmlStream); // negeer cast-warning hier
         } catch (JAXBException e) {
-            throw new DataAccessException(e.getMessage());
+            return null;
         } catch (ClassCastException e) {
             e.printStackTrace();
-            throw new Error(e.getClass() + ": programeerfout");
+            return null;
             // dit zou niet mogen gebeuren, de programmeur zou deze fout moeten voorkomen.
         }
         return item;
@@ -53,29 +50,23 @@ public class XMLunmarshaller<T> {
     /**
      * Opent inputstream met een online XML file om vervolgens in een object van klasse T om te zetten.
      * @param url: url-object naar het bestand, kan online zijn (http) of lokaal (file).
-     * @return converted object from XML, can be casted.
+     * @return zie (@code unmarshall(Inputstream))
      */
-    public T unmarshall(URL url) throws DataAccessException {
+    public T unmarshall(URL url) throws IOException {
         try (InputStream XML_Stream = url.openStream())
         {
             // opgehaald xml-bestand omzetten in een Java-object.
             return unmarshall(XML_Stream);
-        } catch (IOException e) {
-            throw new DataAccessException("Kon Bestand niet ophalen of lezen." );
         }
     }
 
     /**
      * Maakt van de string-url een URL-object.
      * @param url: string-url naar het bestand, kan online zijn (http) of lokaal (file).
-     * @return converted object from XML, can be casted.
+     * @return zie (@code unmarshall(Inputstream))
      */
-    public T unmarshall(String url) throws DataAccessException {
-        try {
+    public T unmarshall(String url) throws IOException {
             return unmarshall(new URL(url));
-        } catch (MalformedURLException e) {
-            throw new DataAccessException("geen geldige String-URL");
-        }
     }
 
 }

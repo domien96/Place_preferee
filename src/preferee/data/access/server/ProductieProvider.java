@@ -6,30 +6,19 @@ import preferee.data.access.server.dao.ServerOrderDAO;
 import preferee.data.access.server.dao.ServerScreenDAO;
 import preferee.data.access.server.dao.ServerShowingDAO;
 
-import java.io.IOException;
 import java.net.URL;
-import java.util.Properties;
 
 /**
  * Created by domien on 9/03/2015.
  */
 public class ProductieProvider implements DataAccessProvider {
 
-    Properties properties;
     URL basic_url;
 
     /**
      * Maken van testServer
      */
-    public ProductieProvider(URL url, String propertiesResource) {
-        // properties
-        Properties properties = new Properties();
-        try {
-            properties.load(ProductieProvider.class.getResourceAsStream(propertiesResource));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        this.properties = properties;
+    public ProductieProvider(URL url) {
         // basis-url
         this.basic_url = url;
     }
@@ -43,7 +32,7 @@ public class ProductieProvider implements DataAccessProvider {
     @Override
     public MovieDAO getMovieDAO() {
         if (movieDAO == null) {
-            movieDAO = new ServerMovieDAO(basic_url + properties.getProperty("moviesPath"));
+            movieDAO = new ServerMovieDAO(basic_url + "/movies");
         }
         return movieDAO;
     }
@@ -56,7 +45,7 @@ public class ProductieProvider implements DataAccessProvider {
     @Override
     public ScreenDAO getScreenDAO() {
         if (screenDAO == null) {
-            screenDAO = new ServerScreenDAO(basic_url + properties.getProperty("screensPath"));
+            screenDAO = new ServerScreenDAO(basic_url + "/screens");
         }
         return screenDAO;
     }
@@ -69,7 +58,7 @@ public class ProductieProvider implements DataAccessProvider {
     @Override
     public ShowingDAO getShowingDAO() {
         if (showingDAO == null) {
-            showingDAO = new ServerShowingDAO(basic_url + properties.getProperty("showingsPath"));
+            showingDAO = new ServerShowingDAO(basic_url + "/showings");
         }
         return showingDAO;
     }
@@ -82,7 +71,7 @@ public class ProductieProvider implements DataAccessProvider {
     @Override
     public OrderDAO getOrderDAO() {
         if (orderDAO == null) {
-            orderDAO = new ServerOrderDAO(basic_url + properties.getProperty("ordersPath"),basic_url + properties.getProperty("reservationsPath"));
+            orderDAO = new ServerOrderDAO(basic_url + "/orders",basic_url + "/reservations");
         }
         return orderDAO;
     }

@@ -1,9 +1,9 @@
 package preferee.data.access.server.dao;
 
 import preferee.data.Order;
-import preferee.data.OrderArray;
+import preferee.data.OrderCollection;
 import preferee.data.Reservation;
-import preferee.data.ReservationArray;
+import preferee.data.ReservationCollection;
 import preferee.data.access.DataAccessException;
 import preferee.data.access.server.http_post_request.POST_requester;
 import preferee.data.access.jaxb.XMLunmarshaller;
@@ -18,9 +18,9 @@ import java.nio.charset.StandardCharsets;
 /**
  * Created by domien on 11/03/2015.
  */
-public class ServerOrderDAO extends ServerAbstractDAO<Order,OrderArray> implements OrderDAO{
+public class ServerOrderDAO extends ServerAbstractDAO<Order,OrderCollection> implements OrderDAO{
 
-    public ServerOrderDAO(String resourceURL, String reservation_URL) { super(resourceURL, Order.class, OrderArray.class); this.reservation_URL = reservation_URL; }
+    public ServerOrderDAO(String resourceURL, String reservation_URL) { super(resourceURL, Order.class, OrderCollection.class); this.reservation_URL = reservation_URL; }
 
     /**
      * OrderDAO communiceert naast de Order-url ook nog met een extra url, namelijk de "Reservation-url".
@@ -32,8 +32,8 @@ public class ServerOrderDAO extends ServerAbstractDAO<Order,OrderArray> implemen
      *  OrderDAO kan bovenop de 2 order-converters ook nog één reservation-object of meerdere reservation-objecten uit een XML bestand halen.
      *  M.a.w. deze klasse bevat nog 2 extra converters, 4 dus in totaal.
      */
-    XMLunmarshaller<Reservation> singleReservationConverter = new XMLunmarshaller<>(Reservation.class);//singleReservationDownloader is momenteel enkel nodig in (@code createReservation).
-    XMLunmarshaller<ReservationArray> multipleReservationConverter = new XMLunmarshaller<>(ReservationArray.class);
+    XMLunmarshaller<Reservation> singleReservationUnmarshaller = new XMLunmarshaller<>(Reservation.class);//singleReservationDownloader is momenteel enkel nodig in (@code createReservation).
+    XMLunmarshaller<ReservationCollection> multipleReservationUnmarshaller = new XMLunmarshaller<>(ReservationCollection.class);
 
 
     /**
@@ -44,8 +44,7 @@ public class ServerOrderDAO extends ServerAbstractDAO<Order,OrderArray> implemen
      */
     @Override
     public Order getOrder(int id) throws DataAccessException {
-        String url = this.itemList_URL + "/" + Integer.toString(id) + ".xml";
-        return singleResourceUnmarshaller.unmarshall(url);
+        return getResource(id);
     }
 
     /**
@@ -56,7 +55,11 @@ public class ServerOrderDAO extends ServerAbstractDAO<Order,OrderArray> implemen
     @Override
     public Iterable<Reservation> listReservations(int orderId) throws DataAccessException { // uit reservations halen
         String url = this.reservation_URL + ".xml?order_id=" + orderId ;
-        return multipleReservationConverter.unmarshall(url).getItemsAsMap().values();
+        try {
+            return multipleReservationUnmarshaller.unmarshall(url).getItemsAsMap().values();
+        } catch (IOException e) {
+            throw new DataAccessException(e.getMessage());
+        }
     }
 
     /**
@@ -103,7 +106,7 @@ public class ServerOrderDAO extends ServerAbstractDAO<Order,OrderArray> implemen
      * @return De overeenkomstige reservatie, of null als het zitje ondertussen niet meer vrij blijkt te zijn
      */
     @Override
-    public Reservation createReservation(int seatNumber, int orderId) throws DataAccessException { //todo
+    public Reservation createReservation(int seatNumber, int orderId) throws DataAccessException {
         // 1) http-request uitvoeren
         String charset = StandardCharsets.UTF_8.name();
         String query;
@@ -124,8 +127,7 @@ public class ServerOrderDAO extends ServerAbstractDAO<Order,OrderArray> implemen
         // 2) response omzetten in Order-object.
         try (InputStream response = connection.getInputStream();) {
 
-            //todo adhv response kijken of zitje al bezet is, wordt nog gemaakt op server.
-            return singleReservationConverter.unmarshall(response);
+            return singleReservationUnmarshaller.unmarshall(response);
         } catch (IOException e) {
             throw new DataAccessException(e.getMessage());
         }
@@ -139,6 +141,10 @@ public class ServerOrderDAO extends ServerAbstractDAO<Order,OrderArray> implemen
     @Override
     public Iterable<Order> listOrders(int showingId) { // uit orders halen
         String url = this.itemList_URL + ".xml?showing_id=" + showingId ;
-        return ResourceArrayUnmarshaller.unmarshall(url).getItemsAsMap().values();
+        try {
+            return multipleResourceUnmarshaller.unmarshall(url).getItemsAsMap().values();
+        } catch (IOException e) {
+            throw new DataAccessException(e.getMessage());
+        }
     }
 }

@@ -1,19 +1,21 @@
 package preferee.data.access.server.dao;
 
 import preferee.data.Showing;
-import preferee.data.ShowingArray;
+import preferee.data.ShowingCollection;
 import preferee.data.access.DataAccessException;
 import preferee.data.access.ShowingDAO;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 /**
  * Created by domien on 11/03/2015.
  */
-public class ServerShowingDAO extends ServerAbstractDAO<Showing,ShowingArray> implements ShowingDAO {
+public class ServerShowingDAO extends ServerAbstractDAO<Showing,ShowingCollection> implements ShowingDAO {
 
-    public ServerShowingDAO(String resourceURL) { super(resourceURL, Showing.class, ShowingArray.class); }
+    public ServerShowingDAO(String resourceURL) { super(resourceURL, Showing.class, ShowingCollection.class); }
 
 
     /**
@@ -24,8 +26,7 @@ public class ServerShowingDAO extends ServerAbstractDAO<Showing,ShowingArray> im
      */
     @Override
     public Showing getShowing(int id) throws DataAccessException {
-        String url = this.itemList_URL + "/" + Integer.toString(id) + ".xml";
-        return singleResourceUnmarshaller.unmarshall(url);
+        return getResource(id);
     }
 
     /**
@@ -50,7 +51,17 @@ public class ServerShowingDAO extends ServerAbstractDAO<Showing,ShowingArray> im
         String url = urlBuilder.toString(); // einde van string-building.
 
         // URL opvragen en omzetten in Movie objecten mbv de multipleResourceDownloader en JAXB (singletons zullen ook werken)
-        return this.ResourceArrayUnmarshaller.unmarshall(url).getItemsAsMap().values();
+        ShowingCollection filtered = null;
+        try {
+            filtered = this.multipleResourceUnmarshaller.unmarshall(url);
+            if (filtered != null)
+                return filtered.getItemsAsMap().values();
+            else
+                return new ArrayList<>(); // lege lijst
+
+        } catch (IOException e) {
+            throw new DataAccessException(e.getMessage());
+        }
     }
 
     /**

@@ -1,32 +1,29 @@
 package preferee.data.access.server.dao;
 
 import preferee.data.Movie;
-import preferee.data.MovieArray;
+import preferee.data.MovieCollection;
 import preferee.data.access.DataAccessException;
 import preferee.data.access.MovieDAO;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by domien on 11/03/2015.
  */
-public class ServerMovieDAO extends ServerAbstractDAO<Movie,MovieArray> implements MovieDAO {
+public class ServerMovieDAO extends ServerAbstractDAO<Movie,MovieCollection> implements MovieDAO {
 
-    public ServerMovieDAO(String resourceURL) { super(resourceURL, Movie.class, MovieArray.class); }
+    public ServerMovieDAO(String resourceURL) { super(resourceURL, Movie.class, MovieCollection.class); }
 
     /**
      * Geef de film terug die overeenkomt met het opgegeven identificatienummer.
-     * Gooit een uitzondering op als een dergelijke film niet best
-     *
-     * OPMERKING: in elke dao zijn deze 2 lijntjes uniek. Toch zet ik ze niet in een superklasse omdat
-     *            ik dan de code moeilijker leesbaar maak om uiteindelijk in deze methode overal 1 lijntje minder te hebben.
-     *            (namelijk (Movie) super(id) in dit geval)
-     *            Er zal ook 2 keer gecast moeten worden dan.aat.
+     * Gooit een uitzondering op als een dergelijke film niet bestaat.
      *
      * @param id
      */
     @Override
     public Movie getMovie(int id) throws DataAccessException {
-        String url = this.itemList_URL + "/" + Integer.toString(id) + ".xml";
-        return singleResourceUnmarshaller.unmarshall(url);
+        return getResource(id);
     }
 
     /**
@@ -49,7 +46,17 @@ public class ServerMovieDAO extends ServerAbstractDAO<Movie,MovieArray> implemen
             String url = urlBuilder.toString(); // einde van string-building.
 
             // URL opvragen en omzetten in Movie objecten mbv de multipleResourceDownloader en JAXB (singletons zullen ook werken)
-            return this.ResourceArrayUnmarshaller.unmarshall(url).getItemsAsMap().values();
+            MovieCollection filtered = null;
+            try {
+                filtered = this.multipleResourceUnmarshaller.unmarshall(url);
+                if (filtered != null)
+                    return filtered.getItemsAsMap().values();
+                else
+                    return new ArrayList<>(); // lege lijst
+
+            } catch (IOException e) {
+                throw new DataAccessException(e.getMessage());
+            }
     }
 
     /**

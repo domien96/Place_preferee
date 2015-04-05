@@ -16,7 +16,7 @@ import java.util.Map;
  */
 
 @XmlRootElement(name="screens")
-public class ScreenArray implements ResourceArray {
+public class ScreenCollection implements ResourceCollection {
     private Screen[] items;
 
     @XmlElement(name = "screen")

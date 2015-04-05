@@ -38,7 +38,7 @@ public class Main extends Application {
      * gecontacteerd worden.
      */
     public static void main(String[] args) { launch(args);
-        // na sluiten
+        // na de uitvoering de provider sluiten
         try {
             Providers.provider.close();
         } catch (Exception e) {

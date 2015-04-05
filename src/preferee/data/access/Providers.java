@@ -26,7 +26,7 @@ public final class Providers {
      */
     public static DataAccessProvider createTestProvider () {
         if (provider == null) {
-            provider = new TestProvider("testFiles.properties");
+            provider = new TestProvider();
         }
         return provider;
 
@@ -38,7 +38,7 @@ public final class Providers {
      */
     public static DataAccessProvider createProvider (URL url) {
         if (provider == null) {
-            provider = new ProductieProvider(url, "serverFiles.properties");
+            provider = new ProductieProvider(url);
         }
         return provider;
     }

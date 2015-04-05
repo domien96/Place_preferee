@@ -1,6 +1,9 @@
 package preferee.data.access.server.dao;
 
+import preferee.data.access.DataAccessException;
 import preferee.data.access.jaxb.XMLunmarshaller;
+
+import java.io.IOException;
 
 /**
  * Created by domien on 11/03/2015.
@@ -8,12 +11,12 @@ import preferee.data.access.jaxb.XMLunmarshaller;
  * Typeparameter Resource : stelt het type van één item.
  * Typeparameter ResourceArray : stelt het type voor van meerdere items (itemArray)
  */
-public class ServerAbstractDAO<Resource, ResourceArray> {
+public abstract class ServerAbstractDAO<Resource, ResourceArray> {
 
     protected ServerAbstractDAO(String serverURL, Class<Resource> singleitem, Class<ResourceArray> multipleItem) {
         this.itemList_URL = serverURL;
         singleResourceUnmarshaller = new XMLunmarshaller<Resource>(singleitem);
-        ResourceArrayUnmarshaller = new XMLunmarshaller<ResourceArray>(multipleItem);
+        multipleResourceUnmarshaller = new XMLunmarshaller<ResourceArray>(multipleItem);
     }
 
     /**
@@ -27,12 +30,24 @@ public class ServerAbstractDAO<Resource, ResourceArray> {
      *  Zo'n downloader moet wel weten welke klasse objecten hij moet vertalen aangezien de downloader met type variabelen werkt.
      */
     XMLunmarshaller<Resource> singleResourceUnmarshaller;
-    XMLunmarshaller<ResourceArray> ResourceArrayUnmarshaller;
+    XMLunmarshaller<ResourceArray> multipleResourceUnmarshaller;
 
 
     /**
      * Verkrijg resource op id
      */
-    // todo
+    protected Resource getResource(int id) throws DataAccessException {
+        String url = this.itemList_URL + "/" + Integer.toString(id) + ".xml";
+        Resource item = null;
+        try {
+            item = singleResourceUnmarshaller.unmarshall(url);
+            if (item != null)
+                return item;
+            else
+                throw new DataAccessException("Item met die id werd niet gevonden.");
+        } catch (IOException e) {
+            throw new DataAccessException(e.getMessage());
+        }
+    }
 
 }
