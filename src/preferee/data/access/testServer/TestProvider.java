@@ -120,7 +120,6 @@ public class TestProvider implements DataAccessProvider {
      */
     @Override
     public void close() throws Exception {
-        //TODO
         server = null; // verwijzing/connectie met testServer verbroken.
         System.out.print("< Provider close >");
     }

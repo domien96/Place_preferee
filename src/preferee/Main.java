@@ -29,9 +29,6 @@ public class Main extends Application {
         stage.setTitle("Place Préférée");
         stage.setScene(new Scene(new Label("Hello world")));
         stage.show();
-
-        //TODO close provider
-        // if (quit == true) provider.close();
     }
 
     /**
@@ -41,8 +38,12 @@ public class Main extends Application {
      * gecontacteerd worden.
      */
     public static void main(String[] args) { launch(args);
+        // na sluiten
+        try {
+            Providers.provider.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
-
-//link: http://esari.ugent.be

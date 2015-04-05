@@ -5,8 +5,6 @@ import preferee.data.MovieArray;
 import preferee.data.access.DataAccessException;
 import preferee.data.access.MovieDAO;
 
-import java.util.ArrayList;
-
 /**
  * Created by domien on 11/03/2015.
  */
@@ -20,6 +18,7 @@ public class ServerMovieDAO extends ServerAbstractDAO<Movie,MovieArray> implemen
      *
      * OPMERKING: in elke dao zijn deze 2 lijntjes uniek. Toch zet ik ze niet in een superklasse omdat
      *            ik dan de code moeilijker leesbaar maak om uiteindelijk in deze methode overal 1 lijntje minder te hebben.
+     *            (namelijk (Movie) super(id) in dit geval)
      *            Er zal ook 2 keer gecast moeten worden dan.aat.
      *
      * @param id
@@ -50,10 +49,7 @@ public class ServerMovieDAO extends ServerAbstractDAO<Movie,MovieArray> implemen
             String url = urlBuilder.toString(); // einde van string-building.
 
             // URL opvragen en omzetten in Movie objecten mbv de multipleResourceDownloader en JAXB (singletons zullen ook werken)
-            MovieArray filtered = this.ResourceArrayUnmarshaller.unmarshall(url);
-            if (filtered == null)
-                return new ArrayList<>();
-            return filtered.getItemsAsMap().values();
+            return this.ResourceArrayUnmarshaller.unmarshall(url).getItemsAsMap().values();
     }
 
     /**
