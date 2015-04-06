@@ -11,6 +11,8 @@ import java.net.URL;
 
 /**
  * JavaFX-hoofdprogramma waarmee de toepassing wordt opgestart,
+ *
+ * Created by domien Van Steendam
  */
 public class Main extends Application {
 

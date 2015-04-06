@@ -32,7 +32,7 @@ public class ServerScreenDAO extends ServerAbstractDAO<Screen,ScreenCollection> 
     public Iterable<Screen> listAll() throws DataAccessException {
         String url = this.itemList_URL + ".xml";
         try {
-            return multipleResourceUnmarshaller.unmarshall(url).getItemsAsMap().values();
+            return multipleResourceUnmarshaller.unmarshall(url).getItemsAsList();
         } catch (IOException e) {
             throw new DataAccessException(e.getMessage());
         }

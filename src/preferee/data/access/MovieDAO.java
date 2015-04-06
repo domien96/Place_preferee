@@ -4,6 +4,8 @@ import preferee.data.Movie;
 
 /**
  * Data access object voor het opvragen van filmgegevens.
+ *
+ * Created by domien
  */
 public interface MovieDAO {
 

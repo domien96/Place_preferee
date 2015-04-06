@@ -5,12 +5,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Zaal waarin films worden vertoond.
+ *
+ * Created by domien
  */
 @XmlRootElement(name="screen")
-public class Screen implements Resource {
-
-    @XmlElement(name="id")
-    private int id;
+public class Screen extends Resource {
 
     @XmlElement(name="name")
     private String name;
@@ -20,13 +19,6 @@ public class Screen implements Resource {
 
     @XmlElement(name="cols")
     private int numberOfColumns;
-
-    /**
-     * Uniek identificatienummer van deze zaal (voor intern gebruik).
-     */
-    public int getId() {
-        return id;
-    }
 
     /**
      * Naam van de zaal

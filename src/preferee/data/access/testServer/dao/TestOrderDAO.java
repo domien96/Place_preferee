@@ -55,10 +55,7 @@ public class TestOrderDAO extends TestAbstractDAO implements OrderDAO {
 
     @Override
     public Order createOrder(String name, int showingId) throws DataAccessException {
-        Order nieuwOrder = new Order();
-        nieuwOrder.setName(name);
-        nieuwOrder.setShowingId(showingId);
-        nieuwOrder.setId(this.hoogsteOrderID + 1); // vorige +1
+        Order nieuwOrder = new Order(this.hoogsteOrderID+1 , name , showingId); // vorige id +1
         hoogsteOrderID += 1;
 
         server.addOrder(nieuwOrder);
@@ -73,10 +70,7 @@ public class TestOrderDAO extends TestAbstractDAO implements OrderDAO {
                 return null;
         }
         // onbezet zitje
-        Reservation nieuwReservation = new Reservation();
-        nieuwReservation.setSeatNumber(seatNumber);
-        nieuwReservation.setOrderId(orderId);
-        nieuwReservation.setId(this.hoogsteReservationID + 1);
+        Reservation nieuwReservation = new Reservation(this.hoogsteReservationID + 1 , seatNumber , orderId);
         hoogsteReservationID += 1;
 
         server.addReservation(nieuwReservation);

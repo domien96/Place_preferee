@@ -49,8 +49,8 @@ public class ServerMovieDAO extends ServerAbstractDAO<Movie,MovieCollection> imp
             MovieCollection filtered = null;
             try {
                 filtered = this.multipleResourceUnmarshaller.unmarshall(url);
-                if (filtered != null)
-                    return filtered.getItemsAsMap().values();
+                if (filtered != null) // prevents nullponiter exception
+                    return filtered.getItemsAsList();
                 else
                     return new ArrayList<>(); // lege lijst
 

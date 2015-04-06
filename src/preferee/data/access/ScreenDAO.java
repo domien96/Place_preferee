@@ -4,6 +4,8 @@ import preferee.data.Screen;
 
 /**
  * Data access object voor het opvragen van zaalgegevens.
+ *
+ * Created by domien
  */
 public interface ScreenDAO {
 

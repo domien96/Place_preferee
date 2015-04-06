@@ -15,6 +15,8 @@ package preferee.data.access;
  * worden afgesloten met behulp van {@link #close}.
  *
  * @see Providers
+ *
+ * Created by domien
  */
 public interface DataAccessProvider extends AutoCloseable {
 

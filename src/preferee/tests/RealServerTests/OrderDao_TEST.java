@@ -27,10 +27,10 @@ public class OrderDao_TEST {
             System.out.println(this.getClass().getName());
             this.dap = dap;
             testGetters();
-            testGetAll();
-            testGetAllReservations();
-            //for (int i=0; i<99; i++) { testMakeOrder();}
-            //testMakeReservation();
+            testListOrders();
+            testListReservations();
+            testMakeOrder();
+            testMakeReservation();
 
         } catch (DataAccessException e) {
             System.err.println("DataAccesException opgevangen in TEST: " + e.getMessage());
@@ -61,8 +61,8 @@ public class OrderDao_TEST {
 
     }
 
-    public void testGetAll() {
-        System.out.println("----------------\ntestGetAll \n----------------");
+    public void testListOrders() {
+        System.out.println("----------------\ntestListOrders \n----------------");
         OrderDAO dao = dap.getOrderDAO();
         int count = 1;
         for ( Order order : dao.listOrders(5) ) { // met showing id
@@ -71,8 +71,8 @@ public class OrderDao_TEST {
         }
     }
 
-    private void testGetAllReservations() {
-        System.out.println("----------------\ntestGetAllReservations \n----------------");
+    private void testListReservations() {
+        System.out.println("----------------\ntestListReservations \n----------------");
         OrderDAO dao = dap.getOrderDAO();
         int count = 1;
         for ( Reservation reservation : dao.listReservations(55) ) { // met order id

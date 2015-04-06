@@ -2,10 +2,6 @@ package preferee.data;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -16,9 +12,7 @@ import java.util.Map;
  */
 
 @XmlRootElement(name="screens")
-public class ScreenCollection implements ResourceCollection {
-    private Screen[] items;
-
+public class ScreenCollection extends ResourceCollection<Screen> {
     @XmlElement(name = "screen")
     public Screen[] getItems() {
         return items;
@@ -26,14 +20,5 @@ public class ScreenCollection implements ResourceCollection {
 
     public void setItems(Screen[] items) {
         this.items = items;
-    }
-
-    public Map<Integer,Screen> getItemsAsMap() {
-        List<Screen> lijst = Arrays.asList(items);
-        Map<Integer,Screen> out = new HashMap<>();
-        for (Screen screen : lijst) {
-            out.put(screen.getId(), screen);
-        }
-        return out;
     }
 }

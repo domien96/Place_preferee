@@ -14,6 +14,7 @@ import java.io.InputStream;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 
 /**
  * Created by domien on 11/03/2015.
@@ -56,7 +57,11 @@ public class ServerOrderDAO extends ServerAbstractDAO<Order,OrderCollection> imp
     public Iterable<Reservation> listReservations(int orderId) throws DataAccessException { // uit reservations halen
         String url = this.reservation_URL + ".xml?order_id=" + orderId ;
         try {
-            return multipleReservationUnmarshaller.unmarshall(url).getItemsAsMap().values();
+            ReservationCollection result;
+            if ( (result = multipleReservationUnmarshaller.unmarshall(url)) != null)
+                return result.getItemsAsList();
+            else
+                return new ArrayList<>();
         } catch (IOException e) {
             throw new DataAccessException(e.getMessage());
         }
@@ -120,7 +125,7 @@ public class ServerOrderDAO extends ServerAbstractDAO<Order,OrderCollection> imp
             // HTTP-request verzenden en connectie opslaan.
             connection = POST_requester.executePOSTRequest(this.reservation_URL + ".xml", query);
 
-        } catch (Exception e) {
+        } catch (IOException e) {
             throw new DataAccessException(e.getMessage());
         }
 
@@ -142,9 +147,9 @@ public class ServerOrderDAO extends ServerAbstractDAO<Order,OrderCollection> imp
     public Iterable<Order> listOrders(int showingId) { // uit orders halen
         String url = this.itemList_URL + ".xml?showing_id=" + showingId ;
         try {
-            return multipleResourceUnmarshaller.unmarshall(url).getItemsAsMap().values();
+            return multipleResourceUnmarshaller.unmarshall(url).getItemsAsList();
         } catch (IOException e) {
-            throw new DataAccessException(e.getMessage());
+            return new ArrayList<>(); // we mogen geen exception verdergooien, zie header.
         }
     }
 }
