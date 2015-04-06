@@ -41,12 +41,9 @@ public abstract class ServerAbstractDAO<Resource, ResourceArray> {
         Resource item = null;
         try {
             item = singleResourceUnmarshaller.unmarshall(url);
-            if (item != null)
-                return item;
-            else
-                throw new DataAccessException("Item met die id werd niet gevonden.");
-        } catch (IOException e) {
-            throw new DataAccessException(e.getMessage());
+            return item;
+        } catch (IOException e) { // zou niet mogen gebeuren
+            throw new DataAccessException("(Programmeerfout) Item met die id werd niet gevonden. " + e.getMessage());
         }
     }
 

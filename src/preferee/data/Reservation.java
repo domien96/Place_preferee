@@ -7,15 +7,25 @@ import javax.xml.bind.annotation.XmlRootElement;
  * Een gereserveerd zitje voor een bepaalde vertoning. Elke reservatie hoort bij een bepaalde bestelling. Dezelfde
  * bestelling kan meerdere reservaties hebben.
  * @see Order
+ *
+ * Created by domien
  */
 @XmlRootElement(name="reservation")
-public class Reservation implements Resource {
+public class Reservation extends Resource {
 
-    private int id;
-
+    @XmlElement(name="seat-number")
     private int seatNumber;
 
+    @XmlElement(name="order-id")
     private int orderId;
+
+    public Reservation(int id, int seatNumber, int orderId) {
+        this.id = id;
+        this.seatNumber = seatNumber;
+        this.orderId = orderId;
+    }
+
+    public Reservation () {}
 
     /**
      * Uniek identificatienummer van deze reservatie (voor intern gebruik).
@@ -38,14 +48,4 @@ public class Reservation implements Resource {
     public int getOrderId() {
         return orderId;
     }
-
-    public void setId(int id) {this.id = id;}
-
-    @XmlElement(name="seat-number")
-    public void setSeatNumber(int seatNumber) {
-        this.seatNumber = seatNumber;
-    }
-
-    @XmlElement(name="order-id")
-    public void setOrderId(int orderId) {this.orderId = orderId;}
 }

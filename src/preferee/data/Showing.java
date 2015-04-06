@@ -11,12 +11,11 @@ import java.util.Date;
 
 /**
  * Vertoning van een film in een bepaalde zaal
+ *
+ * Created by domien
  */
 @XmlRootElement(name="showing")
-public class Showing implements Resource {
-
-    @XmlElement(name="id")
-    private int id;
+public class Showing extends Resource {
 
     @XmlElement(name="movie-id")
     private int movieId;
@@ -25,13 +24,6 @@ public class Showing implements Resource {
     private int screenId;
 
     private LocalDateTime time;
-
-    /**
-     * Uniek identificatienummer van deze vertoning (voor intern gebruik).
-     */
-    public int getId() {
-        return id;
-    }
 
     /**
      * Identificatienummer van de film die wordt vertoond

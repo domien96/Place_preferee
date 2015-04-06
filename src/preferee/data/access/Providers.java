@@ -12,13 +12,15 @@ import java.net.URL;
  * {@code create}-methoden gebruikt om het provider-object aan te maken dat voor de rest van de toepassing zal dienen.
  * Op het einde van de toepassing wordt deze provider gesloten. Binnen één run van de toepassing
  * mag er slechts één van deze methoden worden opgeroepen en dit hoogstens één keer.
+ *
+ * Created by domien
  */
 public final class Providers {
 
     /**
      *
      */
-    public static DataAccessProvider provider = null; // TODO VRAAG OF DIT STATIC MAG ZIJN
+    public static DataAccessProvider provider = null;
 
     /**
      * Creëer een provider die kan gebruikt worden om te testen. Deze provider houdt zijn gegevens bij in het

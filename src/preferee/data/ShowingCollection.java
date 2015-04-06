@@ -2,10 +2,6 @@ package preferee.data;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -16,9 +12,7 @@ import java.util.Map;
  */
 
 @XmlRootElement(name="showings")
-public class ShowingCollection implements ResourceCollection {
-    private Showing[] items;
-
+public class ShowingCollection extends ResourceCollection<Showing> {
     @XmlElement(name = "showing")
     public Showing[] getItems() {
         return items;
@@ -26,14 +20,5 @@ public class ShowingCollection implements ResourceCollection {
 
     public void setItems(Showing[] items) {
         this.items = items;
-    }
-
-    public Map<Integer,Showing> getItemsAsMap() {
-        List<Showing> lijst = Arrays.asList(items);
-        Map<Integer,Showing> out = new HashMap<>();
-        for (Showing showing : lijst) {
-            out.put(showing.getId(), showing);
-        }
-        return out;
     }
 }

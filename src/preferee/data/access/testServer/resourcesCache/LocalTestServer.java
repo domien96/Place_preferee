@@ -3,7 +3,6 @@ package preferee.data.access.testServer.resourcesCache;
 import preferee.data.*;
 import preferee.data.access.jaxb.XMLunmarshaller;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +14,7 @@ import java.util.Map;
 public class LocalTestServer {
 
     /**
-     * Array van movies, order, reservations, screens en showings.
+     * Collectie van movies, order, reservations, screens en showings.
      */
     private Map<Integer,Movie> movies;
     private Map<Integer,Order>  orders;
@@ -27,11 +26,11 @@ public class LocalTestServer {
      * Hardcoded locatie van de xml-bestanden
      * (dit ter vervanging van testFiles.properties)
      */
-    String moviesPath = "/preferee/resources/movies.xml";
-    String ordersPath = "/preferee/resources/orders.xml";
-    String reservationsPath = "/preferee/resources/reservations.xml";
-    String screensPath = "/preferee/resources/screens.xml";
-    String showingsPath = "/preferee/resources/showings.xml";
+    private final String moviesPath = "/preferee/resources/movies.xml";
+    private final String ordersPath = "/preferee/resources/orders.xml";
+    private final String reservationsPath = "/preferee/resources/reservations.xml";
+    private final String screensPath = "/preferee/resources/screens.xml";
+    private final String showingsPath = "/preferee/resources/showings.xml";
 
     /**
      * Maakt een lokale testServer aan.
@@ -42,17 +41,12 @@ public class LocalTestServer {
      */
     public LocalTestServer() {
         // data lokaal opslaan en bijhouden
-        // algemeen: resource = new XMLUnmarshaller<ResourceArray>(ResourceArray.class).unmarshall(<pad naar xml-bestand>) . getitemsasmap()
-        try {
-            movies = new XMLunmarshaller<MovieCollection>(MovieCollection.class).unmarshall(LocalTestServer.class.getResource(moviesPath)).getItemsAsMap();
-            orders = new XMLunmarshaller<OrderCollection>(OrderCollection.class).unmarshall(LocalTestServer.class.getResource(ordersPath)).getItemsAsMap();
-            reservations = new XMLunmarshaller<ReservationCollection>(ReservationCollection.class).unmarshall(LocalTestServer.class.getResource(reservationsPath)).getItemsAsMap();
-            screens = new XMLunmarshaller<ScreenCollection>(ScreenCollection.class).unmarshall(LocalTestServer.class.getResource(screensPath)).getItemsAsMap();
-            showings = new XMLunmarshaller<ShowingCollection>(ShowingCollection.class).unmarshall(LocalTestServer.class.getResource(showingsPath)).getItemsAsMap();
-        } catch (IOException e) {
-            e.printStackTrace();
-            // dit zou niet mogen gebeuren
-        }
+        // algemeen: resource = new XMLUnmarshaller<ResourceArray>(ResourceArray.class).unmarshall(<stream met pad naar xml-bestand>) . getitemsasmap()
+            movies = new XMLunmarshaller<MovieCollection>(MovieCollection.class).unmarshall(LocalTestServer.class.getResourceAsStream(moviesPath)).getItemsAsMap();
+            orders = new XMLunmarshaller<OrderCollection>(OrderCollection.class).unmarshall(LocalTestServer.class.getResourceAsStream(ordersPath)).getItemsAsMap();
+            reservations = new XMLunmarshaller<ReservationCollection>(ReservationCollection.class).unmarshall(LocalTestServer.class.getResourceAsStream(reservationsPath)).getItemsAsMap();
+            screens = new XMLunmarshaller<ScreenCollection>(ScreenCollection.class).unmarshall(LocalTestServer.class.getResourceAsStream(screensPath)).getItemsAsMap();
+            showings = new XMLunmarshaller<ShowingCollection>(ShowingCollection.class).unmarshall(LocalTestServer.class.getResourceAsStream(showingsPath)).getItemsAsMap();
     }
 
     // GETTERS

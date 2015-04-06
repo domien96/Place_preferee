@@ -55,7 +55,7 @@ public class ServerShowingDAO extends ServerAbstractDAO<Showing,ShowingCollectio
         try {
             filtered = this.multipleResourceUnmarshaller.unmarshall(url);
             if (filtered != null)
-                return filtered.getItemsAsMap().values();
+                return filtered.getItemsAsList();
             else
                 return new ArrayList<>(); // lege lijst
 

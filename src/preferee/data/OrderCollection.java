@@ -2,10 +2,6 @@ package preferee.data;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -16,22 +12,10 @@ import java.util.Map;
  */
 
 @XmlRootElement(name="orders")
-public class OrderCollection implements ResourceCollection {
-    private Order[] items;
+public class OrderCollection extends ResourceCollection<Order> {
 
     @XmlElement(name="order")
-    public Order[] getItems() {
-        return items;
-    }
+    public Order[] getItems() {return items;}
 
     public void setItems(Order[] items) { this.items = items;}
-
-    public Map<Integer,Order> getItemsAsMap() {
-        List<Order> lijst = Arrays.asList(items);
-        Map<Integer,Order> out = new HashMap<>();
-        for (Order order : lijst) {
-            out.put(order.getId(), order);
-        }
-        return out;
-    }
 }

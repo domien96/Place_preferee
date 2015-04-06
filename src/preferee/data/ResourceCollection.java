@@ -1,8 +1,28 @@
 package preferee.data;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
- * Markeer-Interface voor alle lijsten van een soort resources
+ * Abstracte bovenklasse voor alle een collectie van een soort resources
  * Created by domien on 2/04/2015.
+ *
+ * type parameter: type of a single resource
  */
-public interface ResourceCollection { 
+public abstract class ResourceCollection<R extends Resource> {
+
+    protected R[] items;
+
+    public Map<Integer, R> getItemsAsMap () {
+        List<R> lijst = Arrays.asList(items);
+        Map<Integer,R> out = new HashMap<>();
+        for (R item : lijst) {
+            out.put(item.getId(), item);
+        }
+        return out;
+    }
+
+    public List<R> getItemsAsList () { return Arrays.asList(items);}
 }

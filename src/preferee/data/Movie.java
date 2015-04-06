@@ -5,12 +5,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Alle gegevens voor een bepaalde film.
+ *
+ * Created by domien Van Steendam
  */
 @XmlRootElement(name="movie")
-public class Movie implements Resource {
-
-    @XmlElement(name="id")
-    private int id;
+public class Movie extends Resource {
 
     @XmlElement(name="title")
     private String title;
@@ -36,9 +35,6 @@ public class Movie implements Resource {
     @XmlElement(name="imdb")
     private String imdbId;
 
-    public int getId() {
-        return id;
-    }
 
     /**
      * Titel van de film
