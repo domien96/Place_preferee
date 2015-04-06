@@ -8,7 +8,7 @@ import preferee.data.access.ScreenDAO;
 import java.io.IOException;
 
 /**
- * Created by domien on 11/03/2015.
+ * Created by domien Van Steendam on 11/03/2015.
  */
 public class ServerScreenDAO extends ServerAbstractDAO<Screen,ScreenCollection> implements ScreenDAO {
 

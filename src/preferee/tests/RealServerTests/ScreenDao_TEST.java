@@ -9,7 +9,7 @@ import preferee.data.access.ScreenDAO;
 import java.net.URL;
 
 /**
- * Created by domien on 24/03/2015.
+ * Created by domien Van Steendam on 24/03/2015.
  */
 public class ScreenDao_TEST {
     DataAccessProvider dap;

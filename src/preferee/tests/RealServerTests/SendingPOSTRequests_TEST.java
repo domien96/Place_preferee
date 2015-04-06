@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by domien on 24/03/2015.
+ * Created by domien Van Steendam on 24/03/2015.
  */
 public class SendingPOSTRequests_TEST {
 
@@ -35,7 +35,6 @@ public class SendingPOSTRequests_TEST {
             String query = String.format("name=%s&showing_id=%s",
                     URLEncoder.encode(param1, charset),
                     URLEncoder.encode(param2, charset));
-            query="name=test&showing_id=7";
         //DEEL2
 
             URLConnection connection = new URL(url).openConnection();
@@ -56,7 +55,7 @@ public class SendingPOSTRequests_TEST {
 
             String contentType = connection.getHeaderField("Content-Type");
 
-        try (InputStream response = connection.getInputStream();) {
+        try (InputStream response = connection.getInputStream()) {
             for (String param : contentType.replace(" ", "").split(";")) {
                 if (param.startsWith("charset=")) {
                     charset = param.split("=", 2)[1];

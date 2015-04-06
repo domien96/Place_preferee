@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  * Abstracte bovenklasse voor alle een collectie van een soort resources
- * Created by domien on 2/04/2015.
+ * Created by domien Van Steendam on 2/04/2015.
  *
  * type parameter: type of a single resource
  */

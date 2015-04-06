@@ -3,7 +3,7 @@ package preferee.data.access;
 /**
  * Uitzondering die kan worden opgegooid wanneer één van de data access methoden een fout veroorzaakt.
  *
- * Created by domien.
+ * Created by domien Van Steendam.
  */
 public class DataAccessException extends RuntimeException {
 

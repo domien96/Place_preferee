@@ -13,7 +13,7 @@ import java.net.URL;
  * Op het einde van de toepassing wordt deze provider gesloten. Binnen één run van de toepassing
  * mag er slechts één van deze methoden worden opgeroepen en dit hoogstens één keer.
  *
- * Created by domien
+ * Created by domien Van Steendam
  */
 public final class Providers {
 

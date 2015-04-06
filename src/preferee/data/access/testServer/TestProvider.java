@@ -8,7 +8,7 @@ import preferee.data.access.testServer.dao.TestScreenDAO;
 import preferee.data.access.testServer.dao.TestShowingDAO;
 
 /**
- * Created by domien on 9/03/2015.
+ * Created by domien Van Steendam on 9/03/2015.
  */
 public class TestProvider implements DataAccessProvider {
 

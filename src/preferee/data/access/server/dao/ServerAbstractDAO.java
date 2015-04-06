@@ -6,7 +6,7 @@ import preferee.data.access.jaxb.XMLunmarshaller;
 import java.io.IOException;
 
 /**
- * Created by domien on 11/03/2015.
+ * Created by domien Van Steendam on 11/03/2015.
  * Abstracte bovenklasse van alle JDBC-DAO'
  * Typeparameter Resource : stelt het type van één item.
  * Typeparameter ResourceArray : stelt het type voor van meerdere items (itemArray)
@@ -38,7 +38,7 @@ public abstract class ServerAbstractDAO<Resource, ResourceArray> {
      */
     protected Resource getResource(int id) throws DataAccessException {
         String url = this.itemList_URL + "/" + Integer.toString(id) + ".xml";
-        Resource item = null;
+        Resource item;
         try {
             item = singleResourceUnmarshaller.unmarshall(url);
             return item;

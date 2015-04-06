@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by domien on 11/03/2015.
+ * Created by domien Van Steendam on 11/03/2015.
  * Bootst een database na zoals op de bioscoop-website
  */
 public class TestMovieDAO extends TestAbstractDAO implements MovieDAO{

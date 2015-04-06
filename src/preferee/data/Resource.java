@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlElement;
  * Markeer-Interface voor alle soorten resources
  * Ik kan geen gemeenshappelijke methodes en velden hier slepen, want het is niet toegelaten om gegeven klassen aan te passen.
  * zoals veld id.
- * Created by domien on 24/03/2015.
+ * Created by domien Van Steendam on 24/03/2015.
  */
 public abstract class Resource {
     /**

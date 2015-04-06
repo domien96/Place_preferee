@@ -17,7 +17,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 /**
- * Created by domien on 11/03/2015.
+ * Created by domien Van Steendam on 11/03/2015.
  */
 public class ServerOrderDAO extends ServerAbstractDAO<Order,OrderCollection> implements OrderDAO{
 
@@ -94,7 +94,7 @@ public class ServerOrderDAO extends ServerAbstractDAO<Order,OrderCollection> imp
         }
 
         // 2) response omzetten in Order-object.
-        try (InputStream response = connection.getInputStream();) {
+        try (InputStream response = connection.getInputStream()) {
 
             return singleResourceUnmarshaller.unmarshall(response);
         } catch (IOException e) {
@@ -130,7 +130,7 @@ public class ServerOrderDAO extends ServerAbstractDAO<Order,OrderCollection> imp
         }
 
         // 2) response omzetten in Order-object.
-        try (InputStream response = connection.getInputStream();) {
+        try (InputStream response = connection.getInputStream()) {
 
             return singleReservationUnmarshaller.unmarshall(response);
         } catch (IOException e) {

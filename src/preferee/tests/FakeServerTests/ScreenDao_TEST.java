@@ -7,12 +7,12 @@ import preferee.data.access.Providers;
 import preferee.data.access.ScreenDAO;
 
 /**
- * Created by domien on 19/03/2015.
+ * Created by domien Van Steendam on 19/03/2015.
  */
 public class ScreenDao_TEST {
     public static void main(String[] args) {
         try(
-        DataAccessProvider provider = Providers.createTestProvider();
+        DataAccessProvider provider = Providers.createTestProvider()
 
         ) {
             ScreenDAO dao = provider.getScreenDAO();

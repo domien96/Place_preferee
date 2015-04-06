@@ -12,7 +12,7 @@ import java.util.Date;
 /**
  * Vertoning van een film in een bepaalde zaal
  *
- * Created by domien
+ * Created by domien Van Steendam
  */
 @XmlRootElement(name="showing")
 public class Showing extends Resource {

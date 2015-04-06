@@ -11,7 +11,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 /**
- * Created by domien on 11/03/2015.
+ * Created by domien Van Steendam on 11/03/2015.
  */
 public class ServerShowingDAO extends ServerAbstractDAO<Showing,ShowingCollection> implements ShowingDAO {
 
@@ -51,7 +51,7 @@ public class ServerShowingDAO extends ServerAbstractDAO<Showing,ShowingCollectio
         String url = urlBuilder.toString(); // einde van string-building.
 
         // URL opvragen en omzetten in Movie objecten mbv de multipleResourceDownloader en JAXB (singletons zullen ook werken)
-        ShowingCollection filtered = null;
+        ShowingCollection filtered;
         try {
             filtered = this.multipleResourceUnmarshaller.unmarshall(url);
             if (filtered != null)

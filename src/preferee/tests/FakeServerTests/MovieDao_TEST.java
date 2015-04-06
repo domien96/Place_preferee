@@ -7,7 +7,7 @@ import preferee.data.access.MovieDAO;
 import preferee.data.access.Providers;
 
 /**
- * Created by domien on 19/03/2015.
+ * Created by domien Van Steendam on 19/03/2015.
  */
 public class MovieDao_TEST {
     DataAccessProvider dap;
@@ -19,8 +19,7 @@ public class MovieDao_TEST {
 
     public void run() {
         try(
-                DataAccessProvider dap = Providers.createTestProvider();
-
+                DataAccessProvider dap = Providers.createTestProvider()
         ) {
             this.dap = dap;
             testGetters();

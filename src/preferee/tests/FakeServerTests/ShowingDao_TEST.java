@@ -6,12 +6,11 @@ import preferee.data.access.DataAccessProvider;
 import preferee.data.access.Providers;
 import preferee.data.access.ShowingDAO;
 
-import java.io.File;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 /**
- * Created by domien on 19/03/2015.
+ * Created by domien Van Steendam on 19/03/2015.
  */
 public class ShowingDao_TEST {
     public static void main(String[] args) {new ShowingDao_TEST().run();}
@@ -20,7 +19,7 @@ public class ShowingDao_TEST {
     ShowingDAO dao ;
 
     public void run() {
-        try(DataAccessProvider provider = Providers.createTestProvider();) {
+        try(DataAccessProvider provider = Providers.createTestProvider()) {
 
             dao = provider.getShowingDAO();
             testGetter();
@@ -29,8 +28,6 @@ public class ShowingDao_TEST {
             testDateFilters();
             testTimeFilters();
             testFromTimeFilters();
-            Object o = new File("src/preferee/resources/movies.xml");
-            int a = 4;
 
         } catch (DataAccessException e) {
             System.err.println(e.getMessage());

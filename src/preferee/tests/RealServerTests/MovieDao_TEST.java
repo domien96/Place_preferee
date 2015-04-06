@@ -9,7 +9,7 @@ import preferee.data.access.Providers;
 import java.net.URL;
 
 /**
- * Created by domien on 22/03/2015.
+ * Created by domien Van Steendam on 22/03/2015.
  */
 public class MovieDao_TEST {
     DataAccessProvider dap;

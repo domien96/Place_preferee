@@ -8,7 +8,7 @@ import java.time.LocalTime;
 /**
  * Data access object voor het opvragen van vertoningen.
  *
- * Created by domien
+ * Created by domien Van Steendam
  */
 public interface ShowingDAO {
 

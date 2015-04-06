@@ -16,7 +16,7 @@ package preferee.data.access;
  *
  * @see Providers
  *
- * Created by domien
+ * Created by domien Van Steendam
  */
 public interface DataAccessProvider extends AutoCloseable {
 

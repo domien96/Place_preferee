@@ -10,7 +10,7 @@ import preferee.data.access.Providers;
 import java.net.URL;
 
 /**
- * Created by domien on 24/03/2015.
+ * Created by domien Van Steendam on 24/03/2015.
  */
 public class OrderDao_TEST {
     DataAccessProvider dap;

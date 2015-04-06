@@ -8,7 +8,7 @@ import preferee.data.access.testServer.resourcesCache.LocalTestServer;
 import java.util.ArrayList;
 
 /**
- * Created by domien on 11/03/2015.
+ * Created by domien Van Steendam on 11/03/2015.
  * Bootst een database na zoals op de bioscoop-website
  */
 public class TestScreenDAO extends TestAbstractDAO implements ScreenDAO {
@@ -27,6 +27,6 @@ public class TestScreenDAO extends TestAbstractDAO implements ScreenDAO {
 
     @Override
     public Iterable<Screen> listAll() throws DataAccessException {
-        return new ArrayList<Screen>(server.getScreens().values()); // defensive copy , arraylist om snel over te itereren.
+        return new ArrayList<>(server.getScreens().values()); // defensive copy , arraylist om snel over te itereren.
     }
 }

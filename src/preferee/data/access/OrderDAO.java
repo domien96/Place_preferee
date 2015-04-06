@@ -6,7 +6,7 @@ import preferee.data.Reservation;
 /**
  * Data access object voor het behandelen van bestellingen en reservaties.
  *
- * Created by domien
+ * Created by domien Van Steendam
  */
 public interface OrderDAO {
 
