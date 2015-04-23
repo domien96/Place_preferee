@@ -9,7 +9,7 @@ import preferee.data.access.server.dao.ServerShowingDAO;
 import java.net.URL;
 
 /**
- * Created by domien Van Steendam on 9/03/2015.
+ * Created by Domien Van Steendam on 9/03/2015.
  */
 public class ProductieProvider implements DataAccessProvider {
 
@@ -122,7 +122,7 @@ public class ProductieProvider implements DataAccessProvider {
      * @throws Exception if this resource cannot be closed
      */
     @Override
-    public void close() throws Exception {
+    public void close() throws DataAccessException {
         System.out.print("< Provider close >");
     }
 }

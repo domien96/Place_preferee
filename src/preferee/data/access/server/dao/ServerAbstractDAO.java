@@ -6,7 +6,7 @@ import preferee.data.access.jaxb.XMLunmarshaller;
 import java.io.IOException;
 
 /**
- * Created by domien Van Steendam on 11/03/2015.
+ * Created by Domien Van Steendam on 11/03/2015.
  * Abstracte bovenklasse van alle JDBC-DAO'
  * Typeparameter Resource : stelt het type van één item.
  * Typeparameter ResourceArray : stelt het type voor van meerdere items (itemArray)

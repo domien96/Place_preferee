@@ -13,14 +13,16 @@ import java.net.URL;
  * Op het einde van de toepassing wordt deze provider gesloten. Binnen één run van de toepassing
  * mag er slechts één van deze methoden worden opgeroepen en dit hoogstens één keer.
  *
- * Created by domien Van Steendam
+ * Created by Domien Van Steendam
  */
 public final class Providers {
 
     /**
      *
      */
-    public static DataAccessProvider provider = null;
+    private static DataAccessProvider provider = null;
+
+    public static DataAccessProvider getProvider() { return provider; }
 
     /**
      * Creëer een provider die kan gebruikt worden om te testen. Deze provider houdt zijn gegevens bij in het

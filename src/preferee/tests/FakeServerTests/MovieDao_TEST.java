@@ -7,7 +7,7 @@ import preferee.data.access.MovieDAO;
 import preferee.data.access.Providers;
 
 /**
- * Created by domien Van Steendam on 19/03/2015.
+ * Created by Domien Van Steendam on 19/03/2015.
  */
 public class MovieDao_TEST {
     DataAccessProvider dap;
@@ -43,7 +43,7 @@ public class MovieDao_TEST {
     public void testFilters() {
         System.out.println("\n----------------\ntestFilters \n----------------");
         MovieDAO mdao = dap.getMovieDAO();
-        Iterable<Movie> lijst = mdao.listFiltered(mdao.byRating("R"), mdao.byYear("2014"));
+        Iterable<Movie> lijst = mdao.listFiltered(mdao.byRating("R"), mdao.byYear("20114"));
 
         for (Movie movie : lijst) {
             System.out.println(movie.getTitle());

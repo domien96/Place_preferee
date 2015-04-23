@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 /**
  * Alle gegevens voor een bepaalde film.
  *
- * Created by domien Van Steendam
+ * Created by Domien Van Steendam
  */
 @XmlRootElement(name="movie")
 public class Movie extends Resource {

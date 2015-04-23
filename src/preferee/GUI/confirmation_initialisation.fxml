@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="155.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="preferee.GUI.confirmation_initialisationCompanion">
+   <children>
+      <Pane layoutX="21.0" layoutY="36.0">
+         <children>
+            <Label text="Bent U zeker dat u wilt doorgaan?" />
+            <Label layoutY="21.0" text="U kan hierna niet meer terug!" />
+         </children>
+      </Pane>
+      <Button layoutX="195.0" layoutY="110.0" mnemonicParsing="false" onAction="#confirmed" text="Ga verder" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0" />
+      <Button layoutX="-31.0" layoutY="110.0" mnemonicParsing="false" onAction="#goBack" styleClass="cancelButton" text="Terug" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" />
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+   <stylesheets>
+      <URL value="@global.css" />
+      <URL value="@confirmation.css" />
+   </stylesheets>
+</AnchorPane>

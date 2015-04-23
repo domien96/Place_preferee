@@ -7,7 +7,7 @@ import preferee.data.access.Providers;
 import preferee.data.access.ScreenDAO;
 
 /**
- * Created by domien Van Steendam on 19/03/2015.
+ * Created by Domien Van Steendam on 19/03/2015.
  */
 public class ScreenDao_TEST {
     public static void main(String[] args) {

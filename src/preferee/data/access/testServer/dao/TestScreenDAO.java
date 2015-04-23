@@ -8,7 +8,7 @@ import preferee.data.access.testServer.resourcesCache.LocalTestServer;
 import java.util.ArrayList;
 
 /**
- * Created by domien Van Steendam on 11/03/2015.
+ * Created by Domien Van Steendam on 11/03/2015.
  * Bootst een database na zoals op de bioscoop-website
  */
 public class TestScreenDAO extends TestAbstractDAO implements ScreenDAO {

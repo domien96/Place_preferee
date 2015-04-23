@@ -3,7 +3,7 @@ package preferee.data.access.testServer.dao;
 import preferee.data.access.testServer.resourcesCache.LocalTestServer;
 
 /**
- * Created by domien Van Steendam on 19/03/2015.
+ * Created by Domien Van Steendam on 19/03/2015.
  */
 public class TestAbstractDAO {
 

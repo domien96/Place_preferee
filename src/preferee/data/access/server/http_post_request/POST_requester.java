@@ -8,7 +8,7 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * Voert POST_requesten uit.
- * Created by domien Van Steendam on 28/03/2015.
+ * Created by Domien Van Steendam on 28/03/2015.
  */
 public class POST_requester {
         /**

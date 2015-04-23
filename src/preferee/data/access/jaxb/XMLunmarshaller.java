@@ -9,7 +9,7 @@ import java.net.URL;
 /**
  * Haal de XML-files uit een gegeven stream /URL en zet deze vervolgens XML-files om in objecten van type T.
  * Deze klasse werkt deels dus ook als een GET_requester
- * Created by domien Van Steendam on 22/03/2015.
+ * Created by Domien Van Steendam on 22/03/2015.
  */
 public class XMLunmarshaller<T> {
 

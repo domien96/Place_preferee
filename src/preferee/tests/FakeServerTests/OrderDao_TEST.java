@@ -7,7 +7,7 @@ import preferee.data.access.OrderDAO;
 import preferee.data.access.Providers;
 
 /**
- * Created by domien Van Steendam on 19/03/2015.
+ * Created by Domien Van Steendam on 19/03/2015.
  */
 public class OrderDao_TEST {
     public static void main(String[] args) {
@@ -31,7 +31,7 @@ public class OrderDao_TEST {
             }
 
         /**
-            dao.createOrder("domien Van Steendam",3);
+            dao.createOrder("Domien Van Steendam",3);
             dao.createOrder("Dieter",3);
 
             for ( Order res: dao.listOrders(3) ) {

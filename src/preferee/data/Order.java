@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * Bij elke bestelling horen 1 of meer reservaties.
  * @see Reservation
  *
- * Created by domien Van Steendam
+ * Created by Domien Van Steendam
  */
 @XmlRootElement(name="order")
 public class Order extends Resource {

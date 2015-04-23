@@ -42,11 +42,16 @@ public class LocalTestServer {
     public LocalTestServer() {
         // data lokaal opslaan en bijhouden
         // algemeen: resource = new XMLUnmarshaller<ResourceArray>(ResourceArray.class).unmarshall(<stream met pad naar xml-bestand>) . getitemsasmap()
+        try {
             movies = new XMLunmarshaller<MovieCollection>(MovieCollection.class).unmarshall(LocalTestServer.class.getResourceAsStream(moviesPath)).getItemsAsMap();
             orders = new XMLunmarshaller<OrderCollection>(OrderCollection.class).unmarshall(LocalTestServer.class.getResourceAsStream(ordersPath)).getItemsAsMap();
             reservations = new XMLunmarshaller<ReservationCollection>(ReservationCollection.class).unmarshall(LocalTestServer.class.getResourceAsStream(reservationsPath)).getItemsAsMap();
             screens = new XMLunmarshaller<ScreenCollection>(ScreenCollection.class).unmarshall(LocalTestServer.class.getResourceAsStream(screensPath)).getItemsAsMap();
             showings = new XMLunmarshaller<ShowingCollection>(ShowingCollection.class).unmarshall(LocalTestServer.class.getResourceAsStream(showingsPath)).getItemsAsMap();
+        } catch ( NullPointerException e) { // zou niet mogen gebeuren => stop programma
+            e.printStackTrace();
+            throw new Error("PROGRAMMEERFOUT : xml's inlezen, foute xml-indeling @ localtestserver");
+        }
     }
 
     // GETTERS

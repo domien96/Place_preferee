@@ -8,7 +8,7 @@ import preferee.data.access.testServer.dao.TestScreenDAO;
 import preferee.data.access.testServer.dao.TestShowingDAO;
 
 /**
- * Created by domien Van Steendam on 9/03/2015.
+ * Created by Domien Van Steendam on 9/03/2015.
  */
 public class TestProvider implements DataAccessProvider {
 
@@ -119,7 +119,7 @@ public class TestProvider implements DataAccessProvider {
      * @throws Exception if this resource cannot be closed
      */
     @Override
-    public void close() throws Exception {
+    public void close() throws DataAccessException {
         server = null; // verwijzing/connectie met testServer verbroken.
         System.out.print("< Provider close >");
     }

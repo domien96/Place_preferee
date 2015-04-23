@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by domien Van Steendam on 24/03/2015.
+ * Created by Domien Van Steendam on 24/03/2015.
  */
 public class SendingPOSTRequests_TEST {
 

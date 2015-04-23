@@ -1,4 +1,4 @@
-Created by domien Van Steendam.
+Created by Domien Van Steendam.
 In mijn project heb ik 2 properties bestanden, 1 voor de testprovider en 11 voor de productie-provider.
 Omdat indianio de properties bestanden niet uitpakt, heb ik de waarden van hardcoded in de LocaltestServer- & productieprovider-klasse geschreven.
 

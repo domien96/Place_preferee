@@ -10,7 +10,7 @@ import java.net.URL;
 import java.time.LocalTime;
 
 /**
- * Created by domien Van Steendam on 23/03/2015.
+ * Created by Domien Van Steendam on 23/03/2015.
  */
 public class ShowingDao_TEST {
     DataAccessProvider dap;

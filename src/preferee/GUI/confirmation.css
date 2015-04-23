@@ -1,0 +1,8 @@
+AnchorPane {
+    -fx-background-image: url("images/dark-grey.jpg");
+}
+
+.label {
+    -fx-text-fill: #ffdb03;
+    -fx-font-weight: bold;
+}

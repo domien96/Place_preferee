@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="659.0" prefWidth="1112.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="preferee.GUI.HomeCompanion">
+   <children>
+      <AnchorPane layoutX="93.0" layoutY="175.0" AnchorPane.rightAnchor="90.0">
+         <children>
+            <HBox alignment="CENTER" layoutX="5.0" layoutY="4.0" prefHeight="46.0" prefWidth="713.0" spacing="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                <ToggleButton mnemonicParsing="false" selected="true" text="Vandaag">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="perioden" />
+                     </toggleGroup></ToggleButton>
+                  <ToggleButton mnemonicParsing="false" text="Deze week" toggleGroup="$perioden" />
+                  <ToggleButton mnemonicParsing="false" text="Alle" toggleGroup="$perioden" />
+               </children>
+            </HBox>
+            <TableView fx:id="tabel" layoutX="5.0" layoutY="46.0" prefHeight="383.0" prefWidth="713.0" AnchorPane.rightAnchor="0.0">
+              <columns>
+                <TableColumn fx:id="titleColumn" prefWidth="100.0" text="titel" />
+                <TableColumn fx:id="idColumn" prefWidth="50.0" text="id" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#exitApplication" styleClass="cancelButton" text="Afsluiten" />
+      <HBox alignment="CENTER" layoutX="105.0" layoutY="101.0" prefHeight="39.0" prefWidth="713.0" spacing="100.0">
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
+         <children>
+            <Label fx:id="label" text="Filmaanbod" />
+         </children>
+      </HBox>
+   </children>
+   <stylesheets>
+      <URL value="@global.css" />
+      <URL value="@home.css" />
+   </stylesheets>
+</AnchorPane>

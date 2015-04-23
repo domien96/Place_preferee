@@ -1,0 +1,21 @@
+AnchorPane {
+    -fx-background-image: url("images/red_obscuur.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+}
+
+.toggle-button {
+    -fx-text-fill: white;
+    -fx-background-radius: 30;
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.toggle-button:hover {
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+.toggle-button:selected {
+    -fx-background-color: linear-gradient(#2A5058, #2A5058);
+}

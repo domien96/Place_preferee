@@ -11,7 +11,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 /**
- * Created by domien Van Steendam on 11/03/2015.
+ * Created by Domien Van Steendam on 11/03/2015.
  */
 public class ServerShowingDAO extends ServerAbstractDAO<Showing,ShowingCollection> implements ShowingDAO {
 

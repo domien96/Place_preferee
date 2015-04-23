@@ -16,7 +16,7 @@ package preferee.data.access;
  *
  * @see Providers
  *
- * Created by domien Van Steendam
+ * Created by Domien Van Steendam
  */
 public interface DataAccessProvider extends AutoCloseable {
 
@@ -39,4 +39,11 @@ public interface DataAccessProvider extends AutoCloseable {
      * Een data access object voor bestellingen en reservaties
      */
     public OrderDAO getOrderDAO();
+
+    /**
+    * Herdefinieer close met een betere throws clause
+    * om compiler-waarschuwingen te voorkomen bij -Xlint.
+    * @throws DataAccessException
+     */
+    public void close() throws DataAccessException;
 }

@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 /**
  * Zaal waarin films worden vertoond.
  *
- * Created by domien Van Steendam
+ * Created by Domien Van Steendam
  */
 @XmlRootElement(name="screen")
 public class Screen extends Resource {

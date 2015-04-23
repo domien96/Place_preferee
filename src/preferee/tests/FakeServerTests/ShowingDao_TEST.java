@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 /**
- * Created by domien Van Steendam on 19/03/2015.
+ * Created by Domien Van Steendam on 19/03/2015.
  */
 public class ShowingDao_TEST {
     public static void main(String[] args) {new ShowingDao_TEST().run();}
@@ -87,7 +87,7 @@ public class ShowingDao_TEST {
     public void testFromTimeFilters() {
         System.out.println("\n----------------\ntestFromTimeFilters \n----------------");
         LocalTime time = LocalTime.of(20,0,0);
-        Iterable<Showing> lijst = dao.listFiltered(dao.fromTimeOfDay(time));
+        Iterable<Showing> lijst = dao.listFiltered(dao.byScreen(3), dao.byDay(LocalDate.now()) );//dao.fromTimeOfDay(time));
         for ( Showing showing : lijst ) {
             System.out.println(showing.getId());
         }
