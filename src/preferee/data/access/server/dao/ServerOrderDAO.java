@@ -1,13 +1,13 @@
 package preferee.data.access.server.dao;
 
 import preferee.data.Order;
-import preferee.data.OrderCollection;
 import preferee.data.Reservation;
 import preferee.data.ReservationCollection;
+import preferee.data.access.AbstractOrderDAO;
 import preferee.data.access.DataAccessException;
-import preferee.data.access.server.http_post_request.POST_requester;
-import preferee.data.access.jaxb.XMLunmarshaller;
 import preferee.data.access.OrderDAO;
+import preferee.data.access.jaxb.XMLunmarshaller;
+import preferee.data.access.server.http_post_request.POST_requester;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,13 +15,14 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created by Domien Van Steendam on 11/03/2015.
  */
-public class ServerOrderDAO extends ServerAbstractDAO<Order,OrderCollection> implements OrderDAO{
+public class serverOrderDAO extends AbstractOrderDAO implements OrderDAO {
 
-    public ServerOrderDAO(String resourceURL, String reservation_URL) { super(resourceURL, Order.class, OrderCollection.class); this.reservation_URL = reservation_URL; }
+    public serverOrderDAO(String resourceURL, String reservation_URL) { super(resourceURL); this.reservation_URL = reservation_URL; }
 
     /**
      * OrderDAO communiceert naast de Order-url ook nog met een extra url, namelijk de "Reservation-url".
@@ -87,7 +88,7 @@ public class ServerOrderDAO extends ServerAbstractDAO<Order,OrderCollection> imp
                     URLEncoder.encode(Integer.toString(showingId), charset));
 
             // HTTP-request verzenden en connectie opslaan.
-            connection = POST_requester.executePOSTRequest(this.itemList_URL + ".xml", query);
+            connection = POST_requester.executePOSTRequest(this.itemsLocation + ".xml", query);
 
         } catch (Exception e) {
             throw new DataAccessException(e.getMessage());
@@ -145,11 +146,34 @@ public class ServerOrderDAO extends ServerAbstractDAO<Order,OrderCollection> imp
      */
     @Override
     public Iterable<Order> listOrders(int showingId) { // uit orders halen
-        String url = this.itemList_URL + ".xml?showing_id=" + showingId ;
+        String url = this.itemsLocation + ".xml?showing_id=" + showingId ;
         try {
             return multipleResourceUnmarshaller.unmarshall(url).getItemsAsList();
         } catch (IOException e) {
             return new ArrayList<>(); // we mogen geen exception verdergooien, zie header.
+        }
+    }
+
+    @Override
+    public Collection<Integer> listTakenSeats(int showingId) {
+        String url = this.reservation_URL + ".xml?showing_id=" + showingId ;
+        Collection<Integer> seatNumbers = new ArrayList<>();
+        try {
+             for ( Reservation res : multipleReservationUnmarshaller.unmarshall(url).getItemsAsList()) {
+                 seatNumbers.add(res.getSeatNumber());
+             }
+            return seatNumbers;
+        } catch (IOException e) {
+            return new ArrayList<>(); // we mogen geen exception verdergooien, zie header.
+        }
+    }
+
+    @Override
+    public Collection<Order> listAll() {
+        try {
+            return multipleResourceUnmarshaller.unmarshall(itemsLocation+".xml").getItemsAsList();
+        } catch (IOException e) {
+            throw new DataAccessException(e.getMessage());
         }
     }
 }

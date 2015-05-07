@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.*?>
+<?import java.net.URL?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="732.0" prefWidth="1303.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="preferee.GUI.scenes.AllMoviesCompanion">
+   <top>
+      <VBox alignment="CENTER" styleClass="hoofding">
+         <children>
+            <Label styleClass="titel" text="Filmaanbod" wrapText="true">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label text="Selecteer de gewenste film. Gebruik eventueel de filters. " />
+            <Label text="Na het selecteren kan u meer details van de film bekijken of kijkenwanneer hij wordt gespeeld." />
+            <Label text="Om te sorteren volgens titel of genre klik je op de overeenkomstige kolom." />
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="50.0" top="15.0" />
+         </BorderPane.margin>
+      </VBox>
+   </top>
+   <stylesheets>
+      <URL value="@_global.css" />
+      <URL value="@_theme.css" />
+      <URL value="@AllMovies.css" />
+   </stylesheets>
+   <left>
+      <VBox alignment="CENTER" spacing="30.0">
+         <children>
+            <VBox id="filterBox" alignment="CENTER" prefHeight="429.0" prefWidth="236.0" spacing="30.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="prefTitle" layoutX="38.0" layoutY="14.0" maxWidth="-Infinity" prefHeight="32.0" prefWidth="150.0" promptText="Zoek op titel" />
+                  <TextField fx:id="prefDirector" maxWidth="-Infinity" prefHeight="32.0" prefWidth="150.0" promptText="Zoek op regisseur" />
+                  <ComboBox fx:id="prefRuntime" prefWidth="150.0" promptText="Speelduur">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="Alle" />
+                           <String fx:value="&lt; 60" />
+                           <String fx:value="&lt; 120" />
+                           <String fx:value="&lt; 180" />
+                        </FXCollections>
+                     </items>
+                  </ComboBox>
+                  <ComboBox fx:id="prefGenre" prefWidth="150.0" promptText="Genre">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="Alle" />
+                           <String fx:value="Action" />
+                           <String fx:value="Adventure" />
+                           <String fx:value="Animation" />
+                           <String fx:value="Biography" />
+                           <String fx:value="Comedy" />
+                           <String fx:value="Crime" />
+                           <String fx:value="Documentary" />
+                           <String fx:value="Drama" />
+                           <String fx:value="Family" />
+                           <String fx:value="Fantasy" />
+                           <String fx:value="Film-noir" />
+                           <String fx:value="History" />
+                           <String fx:value="Horror" />
+                           <String fx:value="Music" />
+                           <String fx:value="Musical" />
+                           <String fx:value="Mystery" />
+                           <String fx:value="Romance" />
+                           <String fx:value="Sci-Fi" />
+                           <String fx:value="Sport" />
+                           <String fx:value="Thriller" />
+                           <String fx:value="War" />
+                           <String fx:value="Western" />
+                        </FXCollections>
+                     </items>
+                  </ComboBox>
+                  <ComboBox fx:id="prefLanguage" prefWidth="150.0" promptText="Taal">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="Alle" />
+                           <String fx:value="Nederlands" />
+                           <String fx:value="Engels" />
+                           <String fx:value="Duits" />
+                           <String fx:value="Frans" />
+                        </FXCollections>
+                     </items>
+                  </ComboBox>
+                  <ComboBox fx:id="prefRating" prefWidth="150.0" promptText="Filmkeuring">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="Alle" />
+                           <String fx:value="G" />
+                           <String fx:value="PG" />
+                           <String fx:value="PG-13" />
+                           <String fx:value="R" />
+                           <String fx:value="NC-17" />
+                        </FXCollections>
+                     </items>
+                  </ComboBox>
+                  <AnchorPane>
+                     <children>
+                        <Button id="zoekKnop" layoutX="57.0" layoutY="6.0" mnemonicParsing="false" onAction="#filter" text="Filter Films" />
+                     </children>
+                  </AnchorPane>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" top="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </VBox>
+         </children>
+      </VBox>
+   </left>
+   <right>
+      <VBox alignment="CENTER_LEFT">
+         <children>
+            <VBox id="infoBox" alignment="CENTER">
+               <children>
+                  <ImageView fx:id="poster" fitHeight="289.0" fitWidth="215.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <effect>
+                        <DropShadow />
+                     </effect></ImageView>
+                  <Label fx:id="title" />
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label text="Regie : " />
+                        <Label fx:id="director" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Label text="Speelduur : " />
+                        <Label fx:id="runtime" text="0" />
+                        <Label text=" minuten" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" spacing="100.0">
+                     <children>
+                        <Button fx:id="goToMovieInfo" mnemonicParsing="false" onAction="#goToFilmInfo" text="Meer info" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <BorderPane.margin>
+                  <Insets right="30.0" />
+               </BorderPane.margin>
+               <VBox.margin>
+                  <Insets right="30.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </VBox>
+         </children>
+      </VBox>
+   </right>
+   <center>
+      <HBox alignment="CENTER" prefHeight="489.0" prefWidth="688.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView id="tabel" fx:id="tabel" layoutX="5.0" layoutY="46.0" AnchorPane.rightAnchor="0.0">
+               <columns>
+                  <TableColumn fx:id="posterColumn" prefWidth="75.0" sortable="false" text="Poster" />
+                  <TableColumn fx:id="titleColumn" prefWidth="263.0" text="Titel" />
+                  <TableColumn fx:id="genreColumn" maxWidth="315.0" minWidth="131.0" prefWidth="152.0" text="Genre" />
+               </columns>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </TableView>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </HBox>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#goBack" styleClass="cancelButton" text="Terug">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <BorderPane.margin>
+            <Insets top="20.0" />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
+</BorderPane>

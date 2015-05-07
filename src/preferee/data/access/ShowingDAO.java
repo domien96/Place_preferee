@@ -62,4 +62,11 @@ public interface ShowingDAO {
      */
     public Filter byMovie(int movieId);
 
+    /**
+     * Filter die films selecteert die vanaf nu vandaag en de komende dagen gespeeld worden.
+     * bv. fromTimeOfDay(7) geeft alle showings vanaf nu + de eerste volgende 6 dagen = deze week vanaf nu;
+     * @param days : het aantal dagen inclusief vandaag.
+     */
+    public Iterable<Showing> fromNow(int days);
+
 }

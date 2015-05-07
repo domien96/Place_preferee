@@ -1,0 +1,43 @@
+.button {
+    -fx-text-fill: white;
+    -fx-background-radius: 30;
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+.cancelButton {
+    -fx-background-color: linear-gradient(#ff5400, #be1d00);
+}
+
+.cancelButton:hover {
+    -fx-background-color: linear-gradient(#be1d00, #ff5400);
+}
+
+#errorLabel {
+    -fx-text-fill: #fc2400;
+}
+
+.highlight-error {
+    -fx-background-color: #fc2400 20%;
+    -fx-border-color : black;
+    -fx-border-width: 1px;
+    -fx-border-radius: 2%;
+}
+
+#tabel {
+    -fx-background-color: rgba(100,100,100,0.5);
+}
+
+#tabel .label {
+    -fx-text-fill: black;
+}
+
+.hoofding {
+     -fx-font-size: 120%;
+     -fx-text-fill: white;
+ }

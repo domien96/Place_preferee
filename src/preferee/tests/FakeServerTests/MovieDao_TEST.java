@@ -43,7 +43,7 @@ public class MovieDao_TEST {
     public void testFilters() {
         System.out.println("\n----------------\ntestFilters \n----------------");
         MovieDAO mdao = dap.getMovieDAO();
-        Iterable<Movie> lijst = mdao.listFiltered(mdao.byRating("R"), mdao.byYear("20114"));
+        Iterable<Movie> lijst = mdao.listFiltered(mdao.byRating("R"), mdao.byYear("2014"),mdao.byTitle("  ki ng     "));
 
         for (Movie movie : lijst) {
             System.out.println(movie.getTitle());

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import java.net.URL?>
+<VBox alignment="CENTER" prefHeight="163.0" prefWidth="332.0" spacing="40.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="preferee.GUI.scenes.HomeCompanion">
+   <children>
+      <Label layoutX="224.0" layoutY="98.0" text="Wat wenst u te doen?" />
+      <Button layoutX="85.0" layoutY="200.0" mnemonicParsing="false" onAction="#goToShowings" text="Kiezen uit alle vertoningen" />
+      <Button layoutX="395.0" layoutY="200.0" mnemonicParsing="false" onAction="#goToMovies" text="Een film zoeken" />
+      <Button layoutX="395.0" layoutY="200.0" mnemonicParsing="false" styleClass="cancelButton" onAction="#exitApplication" text="Place Préféree afsluiten" />
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <stylesheets>
+      <URL value="@_global.css" />
+      <URL value="@_theme.css" />
+   </stylesheets>
+</VBox>

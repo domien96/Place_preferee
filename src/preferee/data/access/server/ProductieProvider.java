@@ -1,10 +1,11 @@
 package preferee.data.access.server;
 
-import preferee.data.access.*;
-import preferee.data.access.server.dao.ServerMovieDAO;
-import preferee.data.access.server.dao.ServerOrderDAO;
-import preferee.data.access.server.dao.ServerScreenDAO;
-import preferee.data.access.server.dao.ServerShowingDAO;
+import preferee.data.access.DataAccessException;
+import preferee.data.access.DataAccessProvider;
+import preferee.data.access.server.dao.serverMovieDAO;
+import preferee.data.access.server.dao.serverOrderDAO;
+import preferee.data.access.server.dao.serverScreenDAO;
+import preferee.data.access.server.dao.serverShowingDAO;
 
 import java.net.URL;
 
@@ -24,54 +25,54 @@ public class ProductieProvider implements DataAccessProvider {
     }
 
 
-    private MovieDAO movieDAO;
+    private preferee.data.access.MovieDAO movieDAO;
 
     /**
      * Een data access object voor films
      */
     @Override
-    public MovieDAO getMovieDAO() {
+    public preferee.data.access.MovieDAO getMovieDAO() {
         if (movieDAO == null) {
-            movieDAO = new ServerMovieDAO(basic_url + "/movies");
+            movieDAO = new serverMovieDAO(basic_url + "/movies");
         }
         return movieDAO;
     }
 
-    private ScreenDAO screenDAO;
+    private preferee.data.access.ScreenDAO screenDAO;
 
     /**
      * Een data access object voor zalen
      */
     @Override
-    public ScreenDAO getScreenDAO() {
+    public preferee.data.access.ScreenDAO getScreenDAO() {
         if (screenDAO == null) {
-            screenDAO = new ServerScreenDAO(basic_url + "/screens");
+            screenDAO = new serverScreenDAO(basic_url + "/screens");
         }
         return screenDAO;
     }
 
-    private ShowingDAO showingDAO;
+    private preferee.data.access.ShowingDAO showingDAO;
 
     /**
      * Een preferee.data access object voor vertoningen
      */
     @Override
-    public ShowingDAO getShowingDAO() {
+    public preferee.data.access.ShowingDAO getShowingDAO() {
         if (showingDAO == null) {
-            showingDAO = new ServerShowingDAO(basic_url + "/showings");
+            showingDAO = new serverShowingDAO(basic_url + "/showings");
         }
         return showingDAO;
     }
 
-    private OrderDAO orderDAO;
+    private preferee.data.access.OrderDAO orderDAO;
 
     /**
      * Een data access object voor bestellingen en reservaties
      */
     @Override
-    public OrderDAO getOrderDAO() {
+    public preferee.data.access.OrderDAO getOrderDAO() {
         if (orderDAO == null) {
-            orderDAO = new ServerOrderDAO(basic_url + "/orders",basic_url + "/reservations");
+            orderDAO = new serverOrderDAO(basic_url + "/orders",basic_url + "/reservations");
         }
         return orderDAO;
     }

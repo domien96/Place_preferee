@@ -3,6 +3,8 @@ package preferee.data.access;
 import preferee.data.Order;
 import preferee.data.Reservation;
 
+import java.util.Collection;
+
 /**
  * Data access object voor het behandelen van bestellingen en reservaties.
  *
@@ -43,5 +45,11 @@ public interface OrderDAO {
      * @return: Set
      */
     public Iterable<Order> listOrders (int showingId);
+
+    /**
+     * Alle gereserveerde stoelnummers voor een gegeven vertoning. Leeg wanneer alle zitjes nog vrij zijn.
+     * @return: Set
+     */
+    public Collection<Integer> listTakenSeats(int showingId);
 
 }

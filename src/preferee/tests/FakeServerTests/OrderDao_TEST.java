@@ -21,7 +21,7 @@ public class OrderDao_TEST {
             //System.out.println(mdao.getMovie(333).getTitle());
              */
 
-            dao.createReservation(99,4);
+            dao.createReservation(98,4);
             dao.createReservation(99,4);
             for ( Reservation res: dao.listReservations(4) ) {
                 System.out.println(res.getOrderId());

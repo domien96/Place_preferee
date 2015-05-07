@@ -35,6 +35,9 @@ public class Movie extends Resource {
     @XmlElement(name="imdb")
     private String imdbId;
 
+    @XmlElement(name="director")
+    private String director;
+
 
     /**
      * Titel van de film
@@ -90,5 +93,9 @@ public class Movie extends Resource {
      */
     public String getImdbId() {
         return imdbId;
+    }
+
+    public String getDirector() {
+        return director;
     }
 }

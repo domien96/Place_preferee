@@ -2,7 +2,8 @@ package preferee;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import preferee.GUI.ScreenManager;
+import preferee.GUI.ScreenController;
+import preferee.GUI.ScreenName;
 import preferee.data.access.Providers;
 
 /**
@@ -14,7 +15,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-         ScreenManager.switchToScreen("Main");
+         ScreenController.init(ScreenName.Main);
     }
 
     /**

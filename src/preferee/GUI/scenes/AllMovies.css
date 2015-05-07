@@ -1,0 +1,8 @@
+#zoekKnop {
+    -fx-graphic: url("../images/vergrootglas.png");
+}
+
+#filterBox , #infoBox {
+    -fx-background-color : rgba(100,100,100,0.5);
+    -fx-background-radius: 3%;
+}

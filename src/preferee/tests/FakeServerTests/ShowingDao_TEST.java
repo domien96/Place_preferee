@@ -28,6 +28,7 @@ public class ShowingDao_TEST {
             testDateFilters();
             testTimeFilters();
             testFromTimeFilters();
+            testFromNow();
 
         } catch (DataAccessException e) {
             System.err.println(e.getMessage());
@@ -68,7 +69,7 @@ public class ShowingDao_TEST {
 
     public void testDateFilters() {
         System.out.println("\n----------------\ntestDateFilters \n----------------");
-        LocalDate date = LocalDate.of(2015,5,22);
+        LocalDate date = LocalDate.of(2015, 5, 22);
         Iterable<Showing> lijst = dao.listFiltered(dao.byDay(date));
         for ( Showing showing : lijst ) {
             System.out.println(showing.getId());
@@ -88,6 +89,15 @@ public class ShowingDao_TEST {
         System.out.println("\n----------------\ntestFromTimeFilters \n----------------");
         LocalTime time = LocalTime.of(20,0,0);
         Iterable<Showing> lijst = dao.listFiltered(dao.byScreen(3), dao.byDay(LocalDate.now()) );//dao.fromTimeOfDay(time));
+        for ( Showing showing : lijst ) {
+            System.out.println(showing.getId());
+        }
+    }
+
+    public void testFromNow() {
+        System.out.println("\n----------------\ntestFromNow \n----------------");
+        LocalTime time = LocalTime.of(20,0,0);
+        Iterable<Showing> lijst = dao.fromNow(18);//dao.fromTimeOfDay(time));
         for ( Showing showing : lijst ) {
             System.out.println(showing.getId());
         }

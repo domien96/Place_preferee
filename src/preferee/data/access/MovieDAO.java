@@ -54,4 +54,28 @@ public interface MovieDAO {
      */
     public Filter byLanguage(String language);
 
+    /**
+     * Filter voor een volledige titel.
+     * Niet hoofdletter-gevoelig.
+     */
+    public Filter byTitle(String title);
+
+    /**
+     * Filter voor een volledige regisseursnaam.
+     * Niet hoofdletter-gevoelig.
+     */
+    public Filter byDirector(String director);
+
+    /**
+     * Filter voor de maximale speeltijd. (inclusief bovengrens)
+     */
+    public Filter byMaxRuntime(int runtime);
+
+    /**
+     * Filter of kinderen al dan niet zijn toegelaten.
+     * Hiervoor wordt gekeken naar de ratings.
+     * Ratings die kinderen toelaten : G , PG
+     */
+    public Filter kidsAllowed(boolean allowed);
+
 }

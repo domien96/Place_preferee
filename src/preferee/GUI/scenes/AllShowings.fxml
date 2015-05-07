@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import preferee.GUI.myComponents.SwitchPeriodButton?>
+<?import java.lang.*?>
+<?import java.net.URL?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="659.0" prefWidth="1303.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
+         <top>
+      <VBox>
+         <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="123.0" prefWidth="1303.0" spacing="10.0" styleClass="hoofding" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label styleClass="titel" text="Programmatie van : " />
+                  <Label prefHeight="27.0" prefWidth="38.0" text="Label" />
+                     </children>
+                  </HBox>
+            <Label text="U kan de voorstellingen van vandaag, deze week en deze maand" />
+            <Label text=" bekijken door gebruik te maken van de knop hieronder" />
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin>
+      </VBox>
+         </top>
+   <stylesheets>
+      <URL value="@_global.css" />
+      <URL value="@_theme.css" />
+      <URL value="@AllShowings.css" />
+   </stylesheets>
+   <right>
+      <ImageView fx:id="poster" fitHeight="342.0" fitWidth="215.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+            <Button mnemonicParsing="false" onAction="#exitApplication" styleClass="cancelButton" text="Afsluiten" BorderPane.alignment="CENTER_LEFT">
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" />
+         </BorderPane.margin>
+      </Button>
+   </bottom>
+   <left>
+      <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+                <SwitchPeriodButton mnemonicParsing="false">
+                    <periodNames>
+                        <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="Vandaag" />
+                                <String fx:value="Deze week" />
+                                <String fx:value="Deze maand" />
+                        </FXCollections>
+                    </periodNames>
+                    <periodInDays>
+                        <FXCollections fx:factory="observableArrayList">
+                            <Integer fx:value="1"/>
+                            <Integer fx:value="7"/>
+                            <Integer fx:value="31"/>
+                        </FXCollections>
+                    </periodInDays>
+                </SwitchPeriodButton>
+                  <TableView fx:id="tabel" layoutX="5.0" layoutY="46.0" prefHeight="383.0" AnchorPane.rightAnchor="0.0">
+                    <columns>
+                        <TableColumn fx:id="dateColumn" minWidth="0.0" prefWidth="180.0" text="Datum" />
+                  <TableColumn fx:id="timeColumn" prefWidth="83.0" text="Aanvang" />
+                      <TableColumn fx:id="idColumn" minWidth="0.0" prefWidth="25.0" text="id" />
+                  <TableColumn fx:id="screenColumn" prefWidth="85.0" text="Zaal" />
+                    </columns>
+                  </TableView>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin>
+      </VBox>
+   </left>
+</BorderPane>

@@ -1,7 +1,6 @@
 package preferee.data.access.testServer;
 
 import preferee.data.access.*;
-import preferee.data.access.testServer.resourcesCache.LocalTestServer;
 import preferee.data.access.testServer.dao.TestMovieDAO;
 import preferee.data.access.testServer.dao.TestOrderDAO;
 import preferee.data.access.testServer.dao.TestScreenDAO;
@@ -12,14 +11,15 @@ import preferee.data.access.testServer.dao.TestShowingDAO;
  */
 public class TestProvider implements DataAccessProvider {
 
-    LocalTestServer server; // aka http_post_request
-
     /**
-     * Maken van testServer
+     * Hardcoded locatie van de xml-bestanden
+     * (dit ter vervanging van testFiles.properties)
      */
-    public TestProvider() {
-        this.server = new LocalTestServer();
-    }
+    private final String moviesPath = "/preferee/resources/movies.xml";
+    private final String ordersPath = "/preferee/resources/orders.xml";
+    private final String reservationsPath = "/preferee/resources/reservations.xml";
+    private final String screensPath = "/preferee/resources/screens.xml";
+    private final String showingsPath = "/preferee/resources/showings.xml";
 
     private MovieDAO movieDAO;
 
@@ -29,7 +29,7 @@ public class TestProvider implements DataAccessProvider {
     @Override
     public MovieDAO getMovieDAO() {
         if (movieDAO == null) {
-            movieDAO = new TestMovieDAO(server);
+            movieDAO = new TestMovieDAO(moviesPath);
         }
         return movieDAO;
     }
@@ -42,7 +42,7 @@ public class TestProvider implements DataAccessProvider {
     @Override
     public ScreenDAO getScreenDAO() {
         if (screenDAO == null) {
-            screenDAO = new TestScreenDAO(server);
+            screenDAO = new TestScreenDAO(screensPath);
         }
         return screenDAO;
     }
@@ -55,7 +55,7 @@ public class TestProvider implements DataAccessProvider {
     @Override
     public ShowingDAO getShowingDAO() {
         if (showingDAO == null) {
-            showingDAO = new TestShowingDAO(server);
+            showingDAO = new TestShowingDAO(showingsPath);
         }
         return showingDAO;
     }
@@ -68,7 +68,7 @@ public class TestProvider implements DataAccessProvider {
     @Override
     public OrderDAO getOrderDAO() {
         if (orderDAO == null) {
-            orderDAO = new TestOrderDAO(server);
+            orderDAO = new TestOrderDAO(ordersPath,reservationsPath);
         }
         return orderDAO;
     }
@@ -120,7 +120,6 @@ public class TestProvider implements DataAccessProvider {
      */
     @Override
     public void close() throws DataAccessException {
-        server = null; // verwijzing/connectie met testServer verbroken.
         System.out.print("< Provider close >");
     }
 }

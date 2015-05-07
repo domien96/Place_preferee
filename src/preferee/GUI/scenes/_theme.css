@@ -1,0 +1,26 @@
+.root {
+    -fx-background-image: url("../images/red_obscuur.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+}
+
+.label {
+    -fx-font-weight: bold;
+    -fx-text-fill: aliceblue;
+}
+
+
+.hoofding .titel {
+    -fx-font-size: 150%;
+}
+
+#infoBox #title {
+    -fx-font-size: 110%;
+    -fx-font-style: normal;
+    -fx-font-weight: bold;
+}
+
+#infoBox .label {
+    -fx-font-style: italic;
+    -fx-font-weight: normal;
+}

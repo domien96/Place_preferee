@@ -1,18 +1,19 @@
 package preferee.data.access.server.dao;
 
 import preferee.data.Screen;
-import preferee.data.ScreenCollection;
+import preferee.data.access.AbstractScreenDAO;
 import preferee.data.access.DataAccessException;
 import preferee.data.access.ScreenDAO;
 
 import java.io.IOException;
+import java.util.Collection;
 
 /**
  * Created by Domien Van Steendam on 11/03/2015.
  */
-public class ServerScreenDAO extends ServerAbstractDAO<Screen,ScreenCollection> implements ScreenDAO {
+public class serverScreenDAO extends AbstractScreenDAO implements ScreenDAO {
 
-    public ServerScreenDAO(String resourceURL) { super(resourceURL, Screen.class, ScreenCollection.class); }
+    public serverScreenDAO(String resourceURL) { super(resourceURL); }
 
     /**
      * De zaal die overeenkomt met het opgegeven identificatienummer.
@@ -29,8 +30,8 @@ public class ServerScreenDAO extends ServerAbstractDAO<Screen,ScreenCollection> 
      * Alle zalen.
      */
     @Override
-    public Iterable<Screen> listAll() throws DataAccessException {
-        String url = this.itemList_URL + ".xml";
+    public Collection<Screen> listAll() throws DataAccessException {
+        String url = this.itemsLocation + ".xml";
         try {
             return multipleResourceUnmarshaller.unmarshall(url).getItemsAsList();
         } catch (IOException e) {

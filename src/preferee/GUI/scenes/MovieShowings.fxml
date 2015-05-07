@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import preferee.GUI.myComponents.*?>
+<?import java.net.URL?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="451.0" prefWidth="672.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <HBox spacing="25.0">
+         <children>
+            <TableView fx:id="tabel">
+              <columns>
+                <TableColumn fx:id="dateColumn" editable="false" prefWidth="97.0" resizable="false" text="Datum" />
+                <TableColumn fx:id="timeColumn" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Aanvang" />
+                  <TableColumn fx:id="screenColumn" editable="false" prefWidth="75.0" resizable="false" sortable="false" text="Zaal" />
+              </columns>
+            </TableView>
+            <VBox id="infoBox" alignment="CENTER" minWidth="158.0" spacing="20.0">
+               <children>
+                  <PropertyBox fx:id="date" property="Datum" />
+                  <PropertyBox fx:id="time" property="Aanvang" />
+                  <PropertyBox fx:id="screen" property="Zaalnummer" />
+                  <Button mnemonicParsing="false" text="Zitjes kiezen" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+         </children>
+      </HBox>
+   </center>
+   <top>
+      <VBox alignment="CENTER" styleClass="hoofding">
+         <children>
+            <PropertyBox fx:id="headingTitle" alignment="CENTER_LEFT" prefHeight="99.0" prefWidth="772.0" property="Film" styleClass="titel" />
+            <Label text="Alle komende voorstellingen van uw gekozen film staan hieronder opgelijst. Selecteer de voorstelling waarvoor u wenst te reserveren." wrapText="true">
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding></Label>
+         </children>
+      </VBox>
+   </top>
+   <padding>
+      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+   </padding>
+   <stylesheets>
+      <URL value="@_global.css" />
+      <URL value="@_theme2.css" />
+   </stylesheets>
+</BorderPane>
