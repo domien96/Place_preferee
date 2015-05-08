@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Collection;
 
 /**
+ * ScreenDAO voor de productie server.
  * Created by Domien Van Steendam on 11/03/2015.
  */
 public class serverScreenDAO extends AbstractScreenDAO implements ScreenDAO {

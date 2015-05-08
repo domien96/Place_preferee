@@ -31,12 +31,13 @@ public class XMLunmarshaller<T> {
      * @param xmlStream : Stream met het xml-bestand
      * @return object van type T of null indien het bestand niet leesbaar of niet het verwachte formaat heeft..
      */
+    @SuppressWarnings("unchecked")
     public T unmarshall(InputStream xmlStream) {
         JAXBContext jc;
         T item;
         try {
             jc = JAXBContext.newInstance(klasseObject);
-            item = (T) jc.createUnmarshaller().unmarshal(xmlStream); // negeer cast-warning hier
+            item = (T) jc.createUnmarshaller().unmarshal(xmlStream);
         } catch (JAXBException e) {
             return null;
         } catch (ClassCastException e) {

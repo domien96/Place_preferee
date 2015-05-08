@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
+ * OrderDAO voor de productie server.
  * Created by Domien Van Steendam on 11/03/2015.
  */
 public class serverOrderDAO extends AbstractOrderDAO implements OrderDAO {
@@ -42,7 +43,6 @@ public class serverOrderDAO extends AbstractOrderDAO implements OrderDAO {
      * De bestelling terug die overeenkomt met het opgegeven identificatienummer.
      * Gooit een uitzondering op als een dergelijke bestelling niet bestaat.
      *
-     * @param id
      */
     @Override
     public Order getOrder(int id) throws DataAccessException {
@@ -52,7 +52,6 @@ public class serverOrderDAO extends AbstractOrderDAO implements OrderDAO {
     /**
      * Alle reservaties voor een gegeven bestelling. Leeg wanneer de bestelling niet bestaat.
      *
-     * @param orderId
      */
     @Override
     public Iterable<Reservation> listReservations(int orderId) throws DataAccessException { // uit reservations halen
@@ -142,7 +141,6 @@ public class serverOrderDAO extends AbstractOrderDAO implements OrderDAO {
     /**
      * Alle bestellingen voor een gegeven vertoning. Leeg wanneer de vertoning niet bestaat.
      *
-     * @param showingId
      */
     @Override
     public Iterable<Order> listOrders(int showingId) { // uit orders halen

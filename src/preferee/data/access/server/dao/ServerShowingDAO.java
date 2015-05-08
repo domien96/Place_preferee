@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Collection;
 
 /**
+ * ShowingDAO voor de productie server.
  * Created by Domien Van Steendam on 11/03/2015.
  */
 public class serverShowingDAO extends AbstractShowingDAO implements ShowingDAO {
