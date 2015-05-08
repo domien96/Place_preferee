@@ -24,3 +24,8 @@
     -fx-font-style: italic;
     -fx-font-weight: normal;
 }
+
+.hoofding {
+    -fx-font-size: 100%;
+    -fx-text-fill: white;
+}

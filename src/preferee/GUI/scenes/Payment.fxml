@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane stylesheets="@_global.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane fx:id="form1">
+         <children>
+            <VBox fx:id="UinfoWrapper1" layoutX="26.0" layoutY="110.0" spacing="10.0">
+               <children>
+                  <TextField fx:id="Uname" layoutX="27.0" layoutY="110.0" prefHeight="31.0" prefWidth="184.0" promptText="Naam" />
+                  <TextField fx:id="Uprename" layoutX="26.0" layoutY="153.0" promptText="Voornaam" />
+               </children>
+            </VBox>
+            <Label layoutX="26.0" layoutY="58.0" text="Vul uw bankgegevens in." />
+            <Label layoutX="26.0" layoutY="14.0" styleClass="hoofding" text="Betaling" />
+            <Label layoutX="26.0" layoutY="200.0" text="Hoe wilt u betalen ?">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </Label>
+            <HBox layoutX="19.0" layoutY="249.0" onMouseClicked="#form1Completed">
+               <children>
+                        <ImageView fitHeight="51.0" fitWidth="98.0" layoutX="54.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/pay_paypal.gif" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="60.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/pay_MastercardLOGO.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="60.0" fitWidth="116.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/pay_visa.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <Button layoutX="14.0" layoutY="335.0" mnemonicParsing="false" onAction="#goBack" styleClass="cancelButton" text="Terug" />
+         </children>
+         <padding>
+            <Insets left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </AnchorPane>
+      <AnchorPane fx:id="form2" visible="false" stylesheets="@_global.css">
+         <children>
+            <VBox fx:id="UinfoWrapper2" layoutX="26.0" layoutY="110.0" spacing="10.0">
+               <children>
+                  <TextField fx:id="Ulogin" layoutX="27.0" layoutY="110.0" prefHeight="31.0" prefWidth="184.0" promptText="Login" />
+                  <PasswordField fx:id="UPass" promptText="Wachtwoord" />
+               </children>
+            </VBox>
+            <Label layoutX="26.0" layoutY="58.0" text="Vul uw gegevens in." />
+            <Label layoutX="26.0" layoutY="14.0" styleClass="hoofding" text="Betaling" />
+            <Button layoutX="162.0" layoutY="249.0" mnemonicParsing="false" onMouseClicked="#form2Completed" text="Reservatie voltooien" />
+            <ProgressBar fx:id="progressBar" layoutX="98.0" layoutY="342.0" prefWidth="200.0" progress="0.0" visible="false"/>
+            <Label layoutX="26.0" layoutY="79.0" text="Het voltooien kan even duren." />
+            <Button layoutX="58.0" layoutY="249.0" mnemonicParsing="false" onAction="#goToForm1" styleClass="cancelButton" text="Terug" />
+            <Pane fx:id="errorMessage" layoutX="37.0" layoutY="291.0" visible="false">
+               <children>
+                  <Label text="Er ging iets mis met het maken van de reservatie. " textFill="RED" wrapText="true" />
+                  <Label layoutY="21.0" text="Controleer eventueel uw internetverbinding." textFill="#da0a0a" />
+               </children>
+            </Pane>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </AnchorPane>
+   </children>
+</StackPane>

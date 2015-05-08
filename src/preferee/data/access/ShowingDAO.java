@@ -67,6 +67,6 @@ public interface ShowingDAO {
      * bv. fromTimeOfDay(7) geeft alle showings vanaf nu + de eerste volgende 6 dagen = deze week vanaf nu;
      * @param days : het aantal dagen inclusief vandaag.
      */
-    public Iterable<Showing> fromNow(int days);
+    public Filter fromNow(int days);
 
 }

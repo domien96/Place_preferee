@@ -39,5 +39,9 @@
 
 .hoofding {
      -fx-font-size: 120%;
-     -fx-text-fill: white;
- }
+     -fx-font-weight: bold;
+}
+
+.InvalidParameter {
+    -fx-background-color: red;
+}

@@ -1,19 +1,26 @@
 package preferee.GUI.scenes;
 
+import com.sun.javafx.scene.control.skin.IntegerFieldSkin;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
+import javafx.scene.control.ListView;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.FlowPane;
-import preferee.GUI.AbstractCompanion;
-import preferee.GUI.Utils;
-import preferee.GUI.parameterCompanion;
+import preferee.GUI.*;
 import preferee.data.Screen;
 import preferee.data.Showing;
 import preferee.data.access.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedList;
 
 /**
+ * Zitjes kiezen
  * Created by Domien on 7/05/2015.
  */
 public class ScreenSeatsCompanion extends AbstractCompanion implements parameterCompanion {
@@ -22,6 +29,9 @@ public class ScreenSeatsCompanion extends AbstractCompanion implements parameter
     private final OrderDAO ordDAO;
     //
     public FlowPane seatsMap;
+    public ListView<Integer> seatNumbersList;
+    public ObservableList<Integer> seatNumbers = FXCollections.observableArrayList();
+    public ProgressBar progressBar;
 
 
     /**
@@ -36,8 +46,11 @@ public class ScreenSeatsCompanion extends AbstractCompanion implements parameter
     }
 
     public void initialize() {
-
-        Utils.task(() -> fillWithSeats()).run();
+        Task<Void> fillTask = Utils.task( () -> fillWithSeats());
+        //fill.setOnFailed(() -> return null;);
+        new Thread(fillTask).start();
+        /** model */
+        seatNumbersList.setItems(seatNumbers);
     }
 
     public Void fillWithSeats() {
@@ -45,6 +58,7 @@ public class ScreenSeatsCompanion extends AbstractCompanion implements parameter
         int rows = screen.getNumberOfRows(), cols = screen.getNumberOfColumns();
         Collection<ToggleButton> screenSeats = new ArrayList<>(); // hierin worden alle zitjes toegevoegd (IN VOLGORDE)
         Collection<Integer> takenSeats = ordDAO.listTakenSeats(parameters.showing.getId()); // die van de gebruiker horen hier niet bij.
+        SeatButtonFactory seatButtonFactory = new SeatButtonFactory(); // maakt zitjes
 
         for ( int i = 0; i< rows*cols; i++) { // zitjes toevoegen
             screenSeats.add(seatButtonFactory.createSeat(i, ! takenSeats.contains(i)));
@@ -53,22 +67,33 @@ public class ScreenSeatsCompanion extends AbstractCompanion implements parameter
         Platform.runLater(() -> { // deze zaken moet op java FX draad gebeuren
             seatsMap.setMinWidth(cols * seatButtonFactory.seatWidth);
             seatsMap.setMaxWidth(cols * seatButtonFactory.seatWidth);
+            seatsMap.getChildren().clear();
                                 seatsMap.getChildren().addAll(screenSeats);});
         return null;
     }
 
-    private static class seatButtonFactory {
-        private static double seatWidth = 60;
+    private class SeatButtonFactory {
+        private double seatWidth = 60;
 
         /**
          * Creert een togglebutton met meegegeven nummer.
          * De boolean bepaalt of het zitje vrij is.
          */
-        public static ToggleButton createSeat(int number, boolean isFree) {
+        public ToggleButton createSeat(int number, boolean isFree) {
             ToggleButton seat = new ToggleButton(String.valueOf(number));
             seat.setPrefWidth(seatWidth);
             seat.setSelected(! isFree);
             seat.setDisable(! isFree);
+
+            //zichzelf toevoegen aan/verwijderen van lijst indien aangeklikt
+            seat.setOnMouseClicked(event -> { ToggleButton clickedSeat = ((ToggleButton) event.getSource());
+                if (!clickedSeat.isDisabled()) {
+                    if (clickedSeat.isSelected())
+                        seatNumbers.add(Integer.valueOf(clickedSeat.getText()));
+                    else // niet geselecteerd
+                        seatNumbers.remove(clickedSeat);
+                }
+            });
             return seat;
         }
     }
@@ -96,5 +121,11 @@ public class ScreenSeatsCompanion extends AbstractCompanion implements parameter
      * METHODS
      *
      */
-
+    /**
+     * Gaat naar betalingsscherm
+     */
+    public void goToPayment() {
+        PaymentCompanion comp = PaymentCompanion.of(parameters.showing, new ArrayList<>(seatNumbers));
+        ScreenController.nextScreen(ScreenName.Payment, false, comp);
+    }
 }

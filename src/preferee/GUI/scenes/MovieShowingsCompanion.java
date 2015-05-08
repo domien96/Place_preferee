@@ -2,20 +2,20 @@ package preferee.GUI.scenes;
 
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.concurrent.Task;
 import javafx.concurrent.Worker;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import preferee.GUI.AbstractCompanion;
-import preferee.GUI.Utils;
+import preferee.GUI.*;
 import preferee.GUI.myComponents.PropertyBox;
-import preferee.GUI.parameterCompanion;
 import preferee.GUI.tableView.AlignedAndWrappedTableCellFactory;
 import preferee.data.Movie;
 import preferee.data.Showing;
@@ -50,6 +50,8 @@ public class MovieShowingsCompanion extends AbstractCompanion implements paramet
     public TableColumn<Showing,LocalTime> timeColumn;
     @FXML
     public TableColumn<Showing,String> screenColumn;
+    @FXML
+    public Button goToSeats;
 
     private MovieShowingsCompanion(ParameterContainer params) {
         this.parameters = params;
@@ -58,6 +60,7 @@ public class MovieShowingsCompanion extends AbstractCompanion implements paramet
 
     public void initialize() {
         /** View */
+        goToSeats.disableProperty().bind(Bindings.isNull(tabel.getSelectionModel().selectedItemProperty()));
         headingTitle.setValue(parameters.movie.getTitle());
 
         // tabel
@@ -108,7 +111,7 @@ public class MovieShowingsCompanion extends AbstractCompanion implements paramet
      */
 
     public void fillTable() {
-        Task<Iterable<Showing>> task = Utils.task(() -> sDAO.listFiltered());
+        Task<Iterable<Showing>> task = Utils.task(() -> sDAO.listFiltered(sDAO.fromNow(Integer.MAX_VALUE)));
         // succeeded : ververs tabel, gefaald : toon foutmelding in gui
         task.stateProperty().addListener((Observable o) ->
         {
@@ -124,6 +127,11 @@ public class MovieShowingsCompanion extends AbstractCompanion implements paramet
             }
         });
         new Thread(task).start();
+    }
+
+    public void goToSeats() {
+        ScreenSeatsCompanion comp = ScreenSeatsCompanion.of(tabel.getSelectionModel().getSelectedItem()); // nooit null, want button luistert naar selectiemodel
+        ScreenController.nextScreen(ScreenName.Seats, false, comp);
     }
 
     private class SelectionListener implements InvalidationListener {

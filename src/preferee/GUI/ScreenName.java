@@ -9,9 +9,11 @@ public enum ScreenName {
     Main, // start- / hoofdvenster
     TestProviderSetup, // setup van testprov
     ProdProviderSetup, // setup van prod prov
-    Confirmation, // bevestigings schermpje geburikt tijdens de setup
     Home, // Venster na de setup
     ListMovies, // Lijst(Tableview) van alle films
     MovieInfo, // Info over iflm gekozen in (@code ListMovies)
-    MovieShowings ;
+    MovieShowings, // voorstellingen van een specifieke film
+    Seats, // zitjes kiezen
+    Payment, // betalingsformulier van een reservatie
+    TransactionComplete; // venster na reservatie-betaling. Hierin staan de kosten en andere nuttige informatie.
 }

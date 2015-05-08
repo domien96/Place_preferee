@@ -8,7 +8,7 @@
     -fx-text-fill: aliceblue;
 }
 
-.titel {
+.hoofding .titel {
     -fx-font-size: 150%;
     -fx-text-fill: white;
 }
@@ -22,4 +22,9 @@
 #infoBox .label {
     -fx-font-style: italic;
     -fx-font-weight: normal;
+}
+
+.hoofding {
+    -fx-font-size: 100%;
+    -fx-text-fill: white;
 }

@@ -4,7 +4,9 @@ import preferee.data.Showing;
 import preferee.data.ShowingCollection;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -39,17 +41,13 @@ public abstract class AbstractShowingDAO extends AbstractDAO<Showing, ShowingCol
      * bv. fromTimeOfDay(7) geeft alle showings vanaf nu + de eerste volgende 6 dagen = deze week vanaf nu;
      * @param days : het aantal dagen inclusief vandaag. Waarde 1 geeft alle showings die vandaag nog te bekijken zijn.
      */
-    public Iterable<Showing> fromNow(int days) {
+    public Filter fromNow(int days) {
         if (days<0){
-            throw new IllegalArgumentException("Amount of days can't be negative");
+            return (ShowingFilter) (showing)-> false;
         }
-        Collection<Showing> out = listFiltered(byTimeOfDay(LocalTime.now())); // wordt vandaag nog gespeeld
-        LocalDate day = LocalDate.now();
-        for (int i=1; i<days; i++) { // i=1; want al 1 dag is hierboven al geregeld
-            day = day.plusDays(1);
-            out.addAll(listFiltered(byDay(day)));
-        }
-        return out;
+        LocalDateTime tomorrowMidnight = LocalDateTime.of(LocalDate.now(ZoneId.systemDefault()), LocalTime.MIDNIGHT).plusDays(1);
+        LocalDateTime upperLimit = tomorrowMidnight.plusDays(days);
+        return (ShowingFilter) (showing) -> showing.getTime().compareTo(upperLimit)<=0 && LocalDateTime.now().compareTo(showing.getTime())<=0;
     }
 
 

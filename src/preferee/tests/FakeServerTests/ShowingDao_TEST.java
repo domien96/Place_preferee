@@ -88,7 +88,7 @@ public class ShowingDao_TEST {
     public void testFromTimeFilters() {
         System.out.println("\n----------------\ntestFromTimeFilters \n----------------");
         LocalTime time = LocalTime.of(20,0,0);
-        Iterable<Showing> lijst = dao.listFiltered(dao.byScreen(3), dao.byDay(LocalDate.now()) );//dao.fromTimeOfDay(time));
+        Iterable<Showing> lijst = dao.listFiltered(dao.fromTimeOfDay(time));
         for ( Showing showing : lijst ) {
             System.out.println(showing.getId());
         }
@@ -96,8 +96,7 @@ public class ShowingDao_TEST {
 
     public void testFromNow() {
         System.out.println("\n----------------\ntestFromNow \n----------------");
-        LocalTime time = LocalTime.of(20,0,0);
-        Iterable<Showing> lijst = dao.fromNow(18);//dao.fromTimeOfDay(time));
+        Iterable<Showing> lijst = dao.listFiltered(dao.fromNow(Integer.MAX_VALUE));
         for ( Showing showing : lijst ) {
             System.out.println(showing.getId());
         }

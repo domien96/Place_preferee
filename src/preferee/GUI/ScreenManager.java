@@ -41,6 +41,9 @@ public class ScreenManager {
             screensProperties.put(ScreenName.ListMovies, new ScreenProperties("scenes/AllMovies.fxml", "Filmoverzicht", true));
             screensProperties.put(ScreenName.MovieInfo, new ScreenProperties("scenes/MovieInfo.fxml", "Film Informatie", true));
             screensProperties.put(ScreenName.MovieShowings, new ScreenProperties("scenes/MovieShowings.fxml", "Programmatie", false));
+            screensProperties.put(ScreenName.Seats, new ScreenProperties("scenes/ScreenSeats.fxml", "Plaatsen kiezen", true));
+            screensProperties.put(ScreenName.Payment, new ScreenProperties("scenes/Payment.fxml", "Betaling", false));
+            screensProperties.put(ScreenName.TransactionComplete, new ScreenProperties("scenes/ReservationComplete.fxml", "Reservatie voltooid!", false));
         } catch (Exception e) {
             e.printStackTrace();
             // programmeerfout, mag niet gebeuren

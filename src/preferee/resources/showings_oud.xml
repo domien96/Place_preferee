@@ -2,7 +2,7 @@
 <showings type="array">
   <showing>
     <id type="integer">1</id>
-    <date type="date">2015-05-22</date>
+    <date type="date">2015-03-25</date>
     <time type="dateTime">2000-01-01T19:45:00Z</time>
     <movie-id type="integer">1</movie-id>
     <screen-id type="integer">1</screen-id>
@@ -11,7 +11,7 @@
   </showing>
   <showing>
     <id type="integer">2</id>
-    <date type="date">2015-02-22</date>
+    <date type="date">2015-03-25</date>
     <time type="dateTime">2000-01-01T20:30:00Z</time>
     <movie-id type="integer">1</movie-id>
     <screen-id type="integer">2</screen-id>
@@ -20,7 +20,7 @@
   </showing>
   <showing>
     <id type="integer">3</id>
-    <date type="date">2015-05-22</date>
+    <date type="date">2015-03-26</date>
     <time type="dateTime">2000-01-01T19:30:00Z</time>
     <movie-id type="integer">2</movie-id>
     <screen-id type="integer">3</screen-id>
@@ -29,7 +29,7 @@
   </showing>
   <showing>
     <id type="integer">4</id>
-    <date type="date">2015-05-22</date>
+    <date type="date">2015-03-26</date>
     <time type="dateTime">2000-01-01T22:00:00Z</time>
     <movie-id type="integer">2</movie-id>
     <screen-id type="integer">1</screen-id>
@@ -38,7 +38,7 @@
   </showing>
   <showing>
     <id type="integer">5</id>
-    <date type="date">2015-05-22</date>
+    <date type="date">2015-03-27</date>
     <time type="dateTime">2000-01-01T20:00:00Z</time>
     <movie-id type="integer">3</movie-id>
     <screen-id type="integer">4</screen-id>
@@ -47,7 +47,7 @@
   </showing>
   <showing>
     <id type="integer">6</id>
-    <date type="date">2015-05-22</date>
+    <date type="date">2015-03-27</date>
     <time type="dateTime">2000-01-01T23:00:00Z</time>
     <movie-id type="integer">3</movie-id>
     <screen-id type="integer">2</screen-id>
@@ -56,7 +56,7 @@
   </showing>
   <showing>
     <id type="integer">7</id>
-    <date type="date">2015-05-23</date>
+    <date type="date">2015-03-27</date>
     <time type="dateTime">2000-01-01T19:30:00Z</time>
     <movie-id type="integer">4</movie-id>
     <screen-id type="integer">1</screen-id>
@@ -65,7 +65,7 @@
   </showing>
   <showing>
     <id type="integer">8</id>
-    <date type="date">2015-05-23</date>
+    <date type="date">2015-03-28</date>
     <time type="dateTime">2000-01-01T22:00:00Z</time>
     <movie-id type="integer">4</movie-id>
     <screen-id type="integer">2</screen-id>
@@ -74,7 +74,7 @@
   </showing>
   <showing>
     <id type="integer">9</id>
-    <date type="date">2015-05-23</date>
+    <date type="date">2015-03-28</date>
     <time type="dateTime">2000-01-01T19:00:00Z</time>
     <movie-id type="integer">5</movie-id>
     <screen-id type="integer">2</screen-id>
@@ -83,7 +83,7 @@
   </showing>
   <showing>
     <id type="integer">10</id>
-    <date type="date">2015-05-23</date>
+    <date type="date">2015-03-28</date>
     <time type="dateTime">2000-01-01T20:00:00Z</time>
     <movie-id type="integer">6</movie-id>
     <screen-id type="integer">3</screen-id>
@@ -92,7 +92,7 @@
   </showing>
   <showing>
     <id type="integer">11</id>
-    <date type="date">2015-05-23</date>
+    <date type="date">2015-03-19</date>
     <time type="dateTime">2000-01-01T23:00:00Z</time>
     <movie-id type="integer">5</movie-id>
     <screen-id type="integer">1</screen-id>
@@ -101,7 +101,7 @@
   </showing>
   <showing>
     <id type="integer">12</id>
-    <date type="date">2015-05-23</date>
+    <date type="date">2015-03-29</date>
     <time type="dateTime">2000-01-01T23:00:00Z</time>
     <movie-id type="integer">7</movie-id>
     <screen-id type="integer">3</screen-id>
@@ -110,7 +110,7 @@
   </showing>
   <showing>
     <id type="integer">13</id>
-    <date type="date">2015-05-23</date>
+    <date type="date">2015-03-29</date>
     <time type="dateTime">2000-01-01T23:00:00Z</time>
     <movie-id type="integer">6</movie-id>
     <screen-id type="integer">4</screen-id>
@@ -119,7 +119,7 @@
   </showing>
   <showing>
     <id type="integer">14</id>
-    <date type="date">2015-05-23</date>
+    <date type="date">2015-03-23</date>
     <time type="dateTime">2000-01-01T15:00:00Z</time>
     <movie-id type="integer">8</movie-id>
     <screen-id type="integer">4</screen-id>
@@ -128,7 +128,7 @@
   </showing>
   <showing>
     <id type="integer">15</id>
-    <date type="date">2015-05-24</date>
+    <date type="date">2015-03-23</date>
     <time type="dateTime">2000-01-01T10:00:00Z</time>
     <movie-id type="integer">8</movie-id>
     <screen-id type="integer">1</screen-id>
@@ -137,7 +137,7 @@
   </showing>
   <showing>
     <id type="integer">16</id>
-    <date type="date">2015-05-24</date>
+    <date type="date">2015-03-24</date>
     <time type="dateTime">2000-01-01T10:00:00Z</time>
     <movie-id type="integer">4</movie-id>
     <screen-id type="integer">2</screen-id>
@@ -146,7 +146,7 @@
   </showing>
   <showing>
     <id type="integer">17</id>
-    <date type="date">2015-05-24</date>
+    <date type="date">2015-03-25</date>
     <time type="dateTime">2000-01-01T10:00:00Z</time>
     <movie-id type="integer">1</movie-id>
     <screen-id type="integer">3</screen-id>
@@ -155,7 +155,7 @@
   </showing>
   <showing>
     <id type="integer">18</id>
-    <date type="date">2015-05-24</date>
+    <date type="date">2015-03-24</date>
     <time type="dateTime">2000-01-01T10:00:00Z</time>
     <movie-id type="integer">7</movie-id>
     <screen-id type="integer">4</screen-id>
