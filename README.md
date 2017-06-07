@@ -1,6 +1,7 @@
 Place-preferee
 ==============
-This is one of my first software projects.
+Remind that this is one of my first software projects.
+
 Documentation language is mainly in Dutch.
 Project Programmeren II : place preferee
 
